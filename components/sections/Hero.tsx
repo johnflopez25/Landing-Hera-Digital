@@ -98,7 +98,7 @@ export default function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-hera-magenta animate-pulse" />
           <span className="font-sans text-[11px] uppercase tracking-[0.15em] text-hera-white/70 font-medium">
-            Escuela de negocios digitales para profesionales
+            Escuela de negocios digitales para profesionales y demas
           </span>
         </motion.div>
 
