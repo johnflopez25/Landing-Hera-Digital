@@ -98,7 +98,7 @@ export default function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-hera-magenta animate-pulse" />
           <span className="font-sans text-[11px] uppercase tracking-[0.15em] text-hera-white/70 font-medium">
-            Escuela de negocios digitales para profesionales y demas
+            Escuela de negocios digitales para profesionales
           </span>
         </motion.div>
 
@@ -109,7 +109,7 @@ export default function Hero() {
           className="font-serif font-bold text-hera-white leading-[1.08] tracking-tight max-w-4xl mb-4"
           style={{ fontSize: "clamp(36px, 5.5vw, 68px)" }}
         >
-          Tu marca personal,<br />
+          Tu marca profesional,<br />
           <span className="text-transparent bg-clip-text"
             style={{ backgroundImage: "linear-gradient(90deg, #F5F5F5 0%, #E13083 100%)" }}>
             tu activo más poderoso
