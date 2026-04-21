@@ -5,34 +5,42 @@ import { motion } from "framer-motion";
 import { Check, Mail, User, Clock } from "lucide-react";
 
 export default function LivesLanding() {
-  // Estado para el contador simulado
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 13,
-    minutes: 34,
-    seconds: 10,
-  });
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        let { days, hours, minutes, seconds } = prev;
-        if (seconds > 0) seconds--;
-        else {
-          seconds = 59;
-          if (minutes > 0) minutes--;
-          else {
-            minutes = 59;
-            if (hours > 0) hours--;
-            else {
-              hours = 23;
-              if (days > 0) days--;
-            }
-          }
-        }
-        return { days, hours, minutes, seconds };
-      });
-    }, 1000);
+    const calculateTimeLeft = () => {
+      const nowMs = new Date().getTime();
+      const nowUTC = new Date();
+      const dayUTC = nowUTC.getUTCDay(); // 5 = Friday
+      
+      let daysUntilFriday = (5 - dayUTC + 7) % 7;
+      
+      // Target is Friday 00:00:00 UTC (which equals Thursday 19:00 COT/UTC-5)
+      const targetUTC = new Date(Date.UTC(
+         nowUTC.getUTCFullYear(),
+         nowUTC.getUTCMonth(),
+         nowUTC.getUTCDate() + daysUntilFriday,
+         0, 0, 0
+      ));
+
+      if (nowMs >= targetUTC.getTime()) {
+        targetUTC.setUTCDate(targetUTC.getUTCDate() + 7);
+      }
+
+      const diff = targetUTC.getTime() - nowMs;
+
+      if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+      return {
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / 1000 / 60) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      };
+    };
+
+    setTimeLeft(calculateTimeLeft());
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -81,16 +89,14 @@ export default function LivesLanding() {
             {/* Pequeño acento de color en la parte superior de la tarjeta */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-hera-black via-hera-magenta to-hera-black opacity-50" />
 
-            <div className="text-center mb-8">
-              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-                Aprende a construir{" "}
-                <span className="text-hera-magenta inline-block italic">autoridad digital</span>{" "}
-                y posicionar tu marca.
+            <div className="text-center mb-10">
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight mb-6">
+                Descubre cómo convertir tu conocimiento profesional en un{" "}
+                <span className="text-hera-magenta inline-block italic">negocio digital rentable</span>.
               </h1>
-              <div className="flex items-center justify-center gap-2 text-hera-white/80 font-medium">
-                <Check className="w-5 h-5 text-hera-magenta" />
-                <p className="text-[15px] md:text-base">
-                  Clases <span className="text-hera-magenta">gratuitas</span> en directo todos los martes a las 19:00.
+              <div className="flex justify-center text-hera-white/70 font-sans leading-relaxed">
+                <p className="text-[15px] md:text-[17px] max-w-2xl px-4 md:px-0">
+                  Cada jueves a las 7:00 p. m. (hora Colombia) comparto en vivo estrategias, sistemas y decisiones reales para que psicólogos, médicos, odontólogos y otros profesionales construyan un negocio digital <strong className="text-hera-white font-semibold">sin depender todo el tiempo de consultas 1 a 1.</strong>
                 </p>
               </div>
             </div>
@@ -123,8 +129,8 @@ export default function LivesLanding() {
                 <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                   <div className="relative h-full w-8 bg-white/20" />
                 </div>
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Regístrate ahora y asegura tu lugar
+                <span className="relative z-10 flex items-center justify-center gap-2 text-[11px] md:text-xs">
+                  QUIERO MI ACCESO AL LIVE
                 </span>
               </button>
             </form>
@@ -133,8 +139,9 @@ export default function LivesLanding() {
           {/* Banner Flotante Inferior superpuesto a la tarjeta */}
           <div className="relative -mt-6 mx-4 md:mx-8">
             <div className="bg-[#1A1A1A] border border-white/5 rounded-b-xl py-5 px-6 text-center shadow-lg">
-              <p className="text-sm md:text-[15px] text-hera-white/70 leading-relaxed max-w-[90%] mx-auto">
-                Las clases estarán disponibles de forma gratuita <strong className="text-hera-white font-semibold">solo durante 7 días</strong> después de la transmisión. Regístrate ahora para no perderte la próxima.
+              <p className="text-sm md:text-[15px] text-hera-white/80 leading-relaxed max-w-[90%] mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse hidden md:block"></span>
+                Recibirás acceso, recordatorios y novedades por WhatsApp y correo electrónico.
               </p>
             </div>
           </div>
@@ -145,85 +152,31 @@ export default function LivesLanding() {
       <section className="w-full pt-16 pb-24 px-4 z-10 relative">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-hera-white text-center mb-10 max-w-3xl">
-            Conoce las estrategias que están redefiniendo el{" "}
-            <span className="text-hera-magenta italic">marketing de autoridad</span>
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-hera-white text-center mb-12 md:mb-16 max-w-3xl leading-snug">
+            ¿Sientes que tu conocimiento <span className="text-hera-magenta italic">vale mucho más</span> de lo que hoy estás monetizando?
           </h2>
 
-          {/* Fila de logos/plataformas */}
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 focus-within:opacity-100 hover:opacity-100 transition-opacity duration-300 mb-16 grayscale">
-            {[
-              {
-                name: "INSTAGRAM",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                )
-              },
-              {
-                name: "FACEBOOK",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                )
-              },
-              {
-                name: "YOUTUBE",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
-                )
-              },
-              {
-                name: "TIKTOK",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M9 0h1.98c.144 2.096 1.522 3.69 3.659 3.905v3.134c-1.29-.028-2.457-.45-3.483-1.126V11.23c0 3.32-2.613 6.012-5.836 6.012S-.516 14.549-.516 11.23 2.193 5.218 5.418 5.218c.348 0 .685.032 1.01.092v3.298a2.76 2.76 0 0 0-.616-.07c-1.488 0-2.694 1.25-2.694 2.793 0 1.543 1.206 2.792 2.694 2.792 1.488 0 2.695-1.25 2.695-2.792V0h.493Z"/></svg>
-                )
-              },
-              {
-                name: "GOOGLE",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/></svg>
-                )
-              },
-              {
-                name: "LINKEDIN",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                )
-              },
-              {
-                name: "X",
-                icon: (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
-                )
-              }
-            ].map((platform) => (
-              <div key={platform.name} className="flex items-center gap-2 text-[11px] md:text-[13px] tracking-[0.15em] font-sans font-bold text-hera-white hover:text-hera-magenta transition-colors duration-200">
-                <span className="opacity-80 flex items-center justify-center">{platform.icon}</span>
-                {platform.name}
-              </div>
-            ))}
-          </div>
-
           {/* Grid de 3 tarjetas estilo "brutalismo premium" oscuro */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 p-px rounded-xl overflow-hidden w-full max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 p-px rounded-xl overflow-hidden w-full max-w-5xl text-left md:text-center">
             {/* Card 1 */}
-            <div className="bg-[#121212] p-8 md:p-10 text-center flex flex-col items-center justify-center">
-              <p className="text-hera-white/80 font-sans leading-relaxed text-[15px] md:text-base">
-                Contenido gratuito con todo lo que necesitas para escalar tu marca en{" "}
-                <strong className="text-hera-magenta font-semibold">cualquier plataforma</strong>.
+            <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
+              <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">1</span>
+              <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
+                Esto es para ti si eres profesional y sientes que tu conocimiento <strong className="text-hera-white font-semibold">vale más de lo que hoy estás monetizando.</strong>
               </p>
             </div>
             {/* Card 2 */}
-            <div className="bg-[#121212] p-8 md:p-10 text-center flex flex-col items-center justify-center">
-              <p className="text-hera-white/80 font-sans leading-relaxed text-[15px] md:text-base">
-                Conocimiento real extraído directamente de la construcción de marcas de{" "}
-                <strong className="text-hera-magenta font-semibold">alto impacto y autoridad</strong>.
+            <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
+              <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">2</span>
+              <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
+                Tal vez ya tienes experiencia, resultados y criterio profesional. Pero todavía no has logrado convertir eso en <strong className="text-hera-white font-semibold">una oferta digital clara, rentable y escalable.</strong>
               </p>
             </div>
             {/* Card 3 */}
-            <div className="bg-[#121212] p-8 md:p-10 text-center flex flex-col items-center justify-center">
-              <p className="text-hera-white/80 font-sans leading-relaxed text-[15px] md:text-base">
-                Entregando de forma 100% libre lo que los cursos de pago y masterclasses{" "}
-                <strong className="text-hera-magenta font-semibold">no se atreven</strong> a enseñarte.
+            <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
+              <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">3</span>
+              <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
+                En estos lives vas a entender cómo estructurar un <strong className="text-hera-white font-semibold">modelo de negocio digital serio</strong>, simple y alineado con tu perfil profesional.
               </p>
             </div>
           </div>
@@ -231,96 +184,182 @@ export default function LivesLanding() {
         </div>
       </section>
 
-      {/* ── SECCIÓN: SOBRE EL EXPERTO ── */}
-      <section className="w-full pt-12 pb-32 px-4 z-10 relative bg-hera-black overflow-hidden border-t border-white/5">
+      {/* ── SECCIÓN: QUÉ VAS A VER (NUEVO BLOQUE DE AUTORIDAD) ── */}
+      <section className="w-full pt-12 pb-32 px-4 z-10 relative bg-[#0a0a0a] overflow-hidden border-t border-white/5">
         <div className="max-w-6xl mx-auto relative">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            {/* Columna Izquierda (Card Principal) */}
-            <div className="lg:col-span-7 z-20">
-              <div className="bg-[#151515] border border-white/5 shadow-2xl rounded-2xl overflow-hidden relative">
-                
-                {/* Contenido principal de texto */}
-                <div className="p-8 md:p-12 text-center lg:text-left">
-                  <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4 block">
-                    Aprende directamente con el...
-                  </span>
-                  <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-hera-white leading-tight mb-8">
-                    Especialista en creación de <span className="text-hera-magenta italic">autoridad premium</span>.
-                  </h2>
+            {/* Columna Izquierda (Contenido y Checklist) */}
+            <div className="lg:col-span-7 z-20 flex flex-col">
+              <div className="bg-[#151515] border border-white/5 shadow-2xl rounded-t-2xl overflow-hidden relative flex-1 p-8 md:p-12">
+                <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4 block">
+                  El Programa en Vivo
+                </span>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white leading-tight mb-10">
+                  ¿Qué vas a ver en <span className="text-hera-magenta italic">estos lives?</span>
+                </h2>
 
-                  <div className="space-y-6 text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
-                    <p>
-                      <strong>Líder de Estrategia</strong> es el responsable de dictar el rumbo del posicionamiento élite en la región con sus metodologías exclusivas. Ha asesorado a marcas que superan límites de facturación y es creador de la {" "}
-                      <strong className="text-hera-magenta">comunidad de growth marketing más activa del sector</strong>.
-                    </p>
-                    <p>
-                      Tras años trabajando en las sombras para CEOs, conferencistas y ejecutivos de alto perfil, hoy abre sus conocimientos avanzados a través de estas clases gratuitas en vivo.
-                    </p>
-                  </div>
+                <ul className="space-y-6 text-hera-white/80 font-sans text-[15px] md:text-base">
+                  {[
+                    "Cómo transformar tu experiencia profesional en una oferta digital de alto valor",
+                    "Qué modelo de negocio digital funciona mejor para profesionales",
+                    "Cómo vender mentorías, consultorías o programas sin volverte influencer",
+                    "Qué errores frenan a la mayoría cuando intenta monetizar su conocimiento",
+                    "Cómo construir un sistema más liviano, rentable y estratégico",
+                    "Cómo empezar aunque todavía no tengas una audiencia grande"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-4">
+                      <div className="mt-1 bg-hera-magenta/10 p-1 rounded-full border border-hera-magenta/30 shadow-[0_0_10px_rgba(225,48,131,0.2)]">
+                        <Check className="w-4 h-4 text-hera-magenta" strokeWidth={3} />
+                      </div>
+                      <span className="leading-relaxed opacity-90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Banner Inferior: AUTORIDAD */}
+              <div className="bg-gradient-to-r from-[#1A1A1A] to-[#121212] border border-t-0 border-white/5 rounded-b-2xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
+                <div className="absolute top-0 left-0 w-1 h-full bg-hera-magenta" />
+                <h3 className="font-sans text-[13px] tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4">
+                  
+                </h3>
+                <h4 className="font-serif text-2xl md:text-3xl font-bold text-hera-white mb-6">
+                  No es teoría. Es lo que estamos construyendo en Hera Digital.
+                </h4>
+                <div className="text-hera-white/60 font-sans text-sm md:text-[15px] space-y-4">
+                  <p>
+                    Estos lives están diseñados desde la experiencia real de construir ofertas, contenidos y sistemas de adquisición para profesionales que quieren independencia, posicionamiento y mejores ingresos.
+                  </p>
+                  <p className="text-hera-white font-semibold italic border-l-2 border-hera-magenta/50 pl-4 py-1">
+                    "No vas a entrar a escuchar motivación vacía. Vas a entrar a entender estructura, estrategia y ejecución."
+                  </p>
                 </div>
-
-                {/* Banner Inferior dentro de la card (Con diseño responsivo adaptado) */}
-                <div className="relative mt-4 md:mt-0">
-                  {/* IMAGEN MÓVIL: Muestra un placeholder de avatar superpuesto a la izquierda del banner SOLO en versión móvil/tablet */}
-                  <div className="lg:hidden absolute bottom-0 left-0 w-[45%] max-w-[180px] h-[130%] flex items-end z-10">
-                    <div className="w-full h-full bg-[#0a0a0a] border-t border-r border-dashed border-white/20 rounded-tr-2xl flex flex-col items-center justify-end pb-4 text-center relative overflow-hidden shadow-[10px_0_20px_rgba(0,0,0,0.5)] bg-gradient-to-t from-hera-black to-[#0f0f0f]">
-                      <User className="w-10 h-10 text-hera-white/10 mb-2 relative z-10" />
-                      <p className="text-hera-white/30 font-sans text-[10px] uppercase font-bold px-2 relative z-10">
-                        Foto Experto
-                      </p>
-                      {/* Fade negro sutil en la base para disolver la imagen si fuera real */}
-                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none" />
-                    </div>
-                  </div>
-
-                  {/* Barra oscura de membresía */}
-                  <div className="bg-gradient-to-r from-[#1A1A1A] to-[#121212] border-t border-white/5 pt-10 pb-6 pr-6 pl-[45%] md:pl-[40%] lg:pl-12 lg:py-8 lg:pt-8 flex flex-col lg:flex-row items-end lg:items-center lg:justify-start gap-2 lg:gap-4 relative overflow-hidden z-0">
-                    
-                    {/* Icono de hashtag oculto en móvil por espacio */}
-                    <div className="hidden lg:flex items-center justify-center text-hera-magenta/20">
-                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="opacity-50"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3L8 21"/><path d="M16 3l-2 18"/></svg>
-                    </div>
-
-                    <div className="text-right lg:text-left w-full">
-                      <h3 className="font-sans text-xl md:text-3xl font-bold text-hera-white tracking-tight">
-                        +10.000 miembros
-                      </h3>
-                      <p className="font-sans text-[10px] md:text-xs tracking-[0.1em] text-hera-white/50 uppercase mt-1">
-                        Comunidad de Autoridad
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
 
-            {/* Columna de Imagen DESKTOP (Derecha) - Oculta en móvil */}
-            <div className="hidden lg:flex lg:col-span-5 relative mt-8 lg:mt-0 justify-center block z-10 lg:-ml-12">
-              <div className="w-full max-w-none aspect-[3/4] rounded-2xl bg-[#0a0a0a] border border-dashed border-white/20 flex flex-col items-center justify-center p-8 text-center relative overflow-hidden shadow-2xl shadow-black/50">
-                <User className="w-16 h-16 text-hera-white/10 mb-4" />
-                <p className="text-hera-white/30 font-sans text-sm tracking-wide z-10">
-                  [Espacio para foto del experto] <br />
-                  <span className="text-xs opacity-50 mt-2 block">Se sugiere PNG transparente recortado,<br/>en escala de grises para max. contraste.</span>
-                </p>
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-hera-black to-transparent pointer-events-none" />
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-hera-magenta/10 blur-[80px]" />
+            {/* Columna Derecha (Agenda Destacada) */}
+            <div className="lg:col-span-5 relative mt-8 lg:mt-0 flex">
+              <div className="w-full h-full min-h-[400px] rounded-2xl bg-[#0a0a0a] border border-white/5 flex flex-col items-center justify-between p-10 text-center relative overflow-hidden shadow-2xl shadow-black/50 group">
+                
+                {/* Glow de fondo reaccionando al hover */}
+                <div className="absolute inset-0 bg-gradient-to-tl from-hera-magenta/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute -top-32 -right-32 w-64 h-64 bg-hera-magenta/10 blur-[100px] rounded-full group-hover:bg-hera-magenta/20 transition-colors duration-700" />
+                
+                {/* 1. Etiqueta Superior */}
+                <div className="relative z-10 w-full mb-8">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-magenta/20 bg-hera-magenta/5 mb-6">
+                    <span className="w-2 h-2 rounded-full bg-hera-magenta animate-pulse" />
+                    <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-hera-magenta/90">Transmisión Semanal</span>
+                  </div>
+                  
+                  <h4 className="font-serif text-2xl font-bold text-hera-white leading-tight mb-2">
+                    Reserva este espacio <br className="hidden lg:block" /> cada semana
+                  </h4>
+                </div>
+
+                {/* 2. Bloque Central: El "Ticket" de Fecha/Hora */}
+                <div className="relative z-10 mb-8 w-full max-w-[280px]">
+                  {/* YouTube Icon interactivo */}
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#121212] border border-white/10 rounded-xl flex items-center justify-center shadow-xl z-20 group-hover:-translate-y-2 group-hover:shadow-[0_10px_30px_rgba(225,48,131,0.2)] transition-all duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hera-magenta"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" /></svg>
+                  </div>
+
+                  {/* Cuerpo del ticket */}
+                  <div className="bg-[#151515] border border-white/10 rounded-2xl p-8 pt-10 shadow-2xl relative overflow-hidden group-hover:border-hera-magenta/30 transition-colors duration-500">
+                    {/* Grid/Raya decorativa */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-hera-magenta to-transparent opacity-50" />
+                    
+                    <div className="flex flex-col gap-1 items-center">
+                      <span className="font-serif text-3xl font-bold text-hera-white uppercase tracking-wider">Jueves</span>
+                      <span className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-hera-white to-hera-white/50 tracking-tighter drop-shadow-md my-2">
+                        7:00 <span className="text-2xl text-hera-white/60">P.M.</span>
+                      </span>
+                      <span className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-hera-magenta mt-1">
+                        Hora Colombia
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Párrafo descriptivo base */}
+                <div className="relative z-10 w-full flex-1 flex items-end">
+                  <p className="text-[13px] md:text-[14px] text-hera-white/50 font-sans leading-relaxed px-4 text-balance">
+                    Un horario pensado para que puedas conectarte después de tu jornada y aterrizar, con calma, decisiones importantes para tu negocio digital.
+                  </p>
+                </div>
+                
+                {/* Sombra base */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
               </div>
             </div>
 
           </div>
 
+        </div>
+      </section>
+
+      {/* ── SECCIÓN: FILTRO DE AUDIENCIA ── */}
+      <section className="w-full pt-20 pb-28 px-4 z-10 relative bg-hera-black border-t border-white/5">
+        <div className="max-w-3xl mx-auto flex flex-col items-center">
+          
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-hera-white text-center mb-12 md:mb-16 leading-tight">
+            Estos lives <span className="text-hera-magenta italic">no son</span> para todo el mundo
+          </h2>
+
+          <div className="flex flex-col gap-6 w-full">
+            {/* NO 1 */}
+            <div className="bg-[#121212] border border-white/5 rounded-2xl p-6 md:p-8 flex items-start gap-4 md:gap-6 hover:bg-[#151515] transition-colors">
+              <div className="mt-1 bg-white/5 p-2 rounded-full text-hera-white/40 shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed">
+                No es para personas que buscan <strong className="text-hera-white font-semibold">dinero rápido</strong> sin construir nada sólido.
+              </p>
+            </div>
+
+            {/* NO 2 */}
+            <div className="bg-[#121212] border border-white/5 rounded-2xl p-6 md:p-8 flex items-start gap-4 md:gap-6 hover:bg-[#151515] transition-colors">
+              <div className="mt-1 bg-white/5 p-2 rounded-full text-hera-white/40 shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed">
+                No es para quien quiere seguir consumiendo contenido <strong className="text-hera-white font-semibold">sin ejecutar</strong>.
+              </p>
+            </div>
+
+            {/* SÍ (Destacado) */}
+            <div className="relative mt-4">
+              <div className="absolute -inset-1 bg-gradient-to-r from-hera-magenta/50 to-hera-magenta/0 rounded-2xl blur opacity-20"></div>
+              <div className="bg-[#151515] border border-hera-magenta/30 rounded-2xl p-6 md:p-8 lg:p-10 flex items-start gap-4 md:gap-6 relative shadow-[0_10px_40px_rgba(225,48,131,0.15)]">
+                <div className="mt-1 bg-hera-magenta/10 p-2 rounded-full text-hera-magenta shrink-0 border border-hera-magenta/20 shadow-[0_0_15px_rgba(225,48,131,0.2)]">
+                  <Check strokeWidth={3} className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-magenta mb-3 block">
+                    Esto SÍ es para ti
+                  </span>
+                  <p className="text-hera-white/90 font-sans text-[15px] md:text-[17px] leading-relaxed">
+                    Sí es para profesionales que quieren <strong className="text-hera-white font-bold">pensar mejor, estructurar mejor y construir un negocio digital con criterio.</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ── SECCIÓN FINAL (CTA Cierre + Minimal Footer) ── */}
       <section className="w-full bg-hera-black pt-20 flex flex-col items-center relative z-10 border-t border-white/5">
         <div className="max-w-5xl mx-auto text-center px-4 mb-20 w-full">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white mb-10">
-            Asegura tu acceso a la <span className="text-hera-magenta italic">próxima masterclass</span>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white mb-6 leading-tight max-w-3xl mx-auto">
+            Cada jueves puede convertirse en una <span className="text-hera-magenta italic">decisión importante</span> para tu futuro profesional
           </h2>
+          <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed max-w-2xl mx-auto mb-12">
+            Si quieres dejar de improvisar y empezar a construir un negocio digital con dirección, este espacio es para ti.
+          </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
             {/* Íconos Izquierda */}
@@ -335,12 +374,12 @@ export default function LivesLanding() {
             {/* BOTÓN CTA */}
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group relative w-full md:w-auto rounded-lg bg-hera-magenta py-4 px-12 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20"
+              className="group relative w-full md:w-auto rounded-lg bg-hera-magenta py-4 px-10 font-sans text-xs md:text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20"
             >
               <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                 <div className="relative h-full w-8 bg-white/20" />
               </div>
-              <span className="relative z-10">¡Quiero Registrarme!</span>
+              <span className="relative z-10">QUIERO ENTRAR AL LIVE DEL JUEVES</span>
             </button>
 
             {/* Íconos Derecha */}
