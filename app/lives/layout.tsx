@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Regístrate al Live Exclusivo — Hera Digital",
+  title: "Clases en Vivo para Profesionales — Hera Digital",
   description:
-    "Descubre cómo posicionar tu marca personal y monetizar tu autoridad en nuestro próximo live exclusivo para profesionales.",
+    "Descubre cómo estructurar y monetizar tu conocimiento en un negocio digital rentable. Estrategias semanales en vivo para psicólogos, médicos y profesionales.",
   openGraph: {
-    title: "Live Exclusivo — Hera Digital",
-    description: "Aprende las estrategias de personal branding y growth marketing.",
+    title: "Clases en Vivo: Negocios Digitales para Profesionales — Hera Digital",
+    description: "Cada jueves en vivo: estrategias reales para convertir tu experiencia en una oferta digital clara y escalable, sin depender de la consulta 1 a 1.",
     type: "website",
     locale: "es_CO",
   },
