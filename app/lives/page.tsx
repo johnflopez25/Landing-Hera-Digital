@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Check, Mail, User, Clock } from "lucide-react";
+import { Check, Mail, User, Clock, Phone } from "lucide-react";
+import Script from "next/script";
 
 export default function LivesLanding() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -101,12 +102,19 @@ export default function LivesLanding() {
               </div>
             </div>
 
-            {/* Formulario */}
-            <form className="flex flex-col gap-4 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+            {/* Formulario (Integrado con MailerLite V2 JS) */}
+            <form 
+              className="flex flex-col gap-4 max-w-md mx-auto ml-block-form"
+              action="https://assets.mailerlite.com/jsonp/482562/forms/185416114496341367/subscribe"
+              data-code=""
+              method="post" 
+              target="_blank"
+            >
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
                 <input 
                   type="text" 
+                  name="fields[name]"
                   placeholder="Ingresa tu nombre *" 
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
@@ -116,15 +124,30 @@ export default function LivesLanding() {
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
                 <input 
                   type="email" 
+                  name="fields[email]"
                   placeholder="Tu mejor correo electrónico *" 
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
+              <div className="relative">
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
+                <input 
+                  type="text" 
+                  name="fields[phone]"
+                  placeholder="Tu WhatsApp *" 
+                  required
+                  className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
+                />
+              </div>
+
+              {/* MailerLite Hidden Fields */}
+              <input type="hidden" name="ml-submit" value="1" />
+              <input type="hidden" name="anticsrf" value="true" />
 
               <button 
                 type="submit"
-                className="group relative w-full rounded-lg bg-hera-magenta py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden mt-2"
+                className="primary group relative w-full rounded-lg bg-hera-magenta py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden mt-2"
               >
                 <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                   <div className="relative h-full w-8 bg-white/20" />
@@ -283,8 +306,17 @@ export default function LivesLanding() {
                   </div>
                 </div>
 
-                {/* 3. Párrafo descriptivo base */}
-                <div className="relative z-10 w-full flex-1 flex items-end">
+                {/* 3. Párrafo descriptivo base y Foto */}
+                <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-end gap-6 mt-4">
+                  {/* FOTO EXPERTO */}
+                  <div className="w-full max-w-[180px] md:max-w-[200px] aspect-[3/4] rounded-xl bg-transparent border border-dashed border-white/20 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden group-hover:border-hera-magenta/30 transition-colors duration-500">
+                    <User className="w-10 h-10 text-hera-white/10 mb-2 relative z-10" />
+                    <p className="text-hera-white/30 font-sans text-[10px] tracking-widest z-10 uppercase font-bold relative">
+                      Foto Experto
+                    </p>
+                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none" />
+                  </div>
+
                   <p className="text-[13px] md:text-[14px] text-hera-white/50 font-sans leading-relaxed px-4 text-balance">
                     Un horario pensado para que puedas conectarte después de tu jornada y aterrizar, con calma, decisiones importantes para tu negocio digital.
                   </p>
@@ -411,6 +443,26 @@ export default function LivesLanding() {
           </div>
         </div>
       </section>
+
+      {/* Scripts de MailerLite Integrados */}
+      <Script id="ml-success-script" strategy="lazyOnload">
+        {`
+          function ml_webform_success_40245286() {
+            try {
+              window.top.location.href = 'https://us.heradigital.pro/lives/gracias';
+            } catch (e) {
+              window.location.href = 'https://us.heradigital.pro/lives/gracias';
+            }
+          }
+        `}
+      </Script>
+      <Script 
+        src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" 
+        strategy="lazyOnload" 
+      />
+      <Script id="ml-analytics" strategy="lazyOnload">
+        {`fetch("https://assets.mailerlite.com/jsonp/482562/forms/185416114496341367/takel");`}
+      </Script>
 
     </main>
   );

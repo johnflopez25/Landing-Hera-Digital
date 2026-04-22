@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import { Encode_Sans_Semi_Expanded } from "next/font/google";
+
+const encodeSans = Encode_Sans_Semi_Expanded({
+  weight: ["700"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Clases en Vivo para Profesionales — Hera Digital",
@@ -17,7 +23,16 @@ export default function LivesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Aquí no hay <body> ni <html> porque se heredan del layout raíz.
-  // Este layout existe únicamente para inyectar los metadatos específicos arriba.
-  return <>{children}</>;
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .font-serif {
+          font-family: ${encodeSans.style.fontFamily} !important;
+        }
+      `}} />
+      <div className={encodeSans.className}>
+        {children}
+      </div>
+    </>
+  );
 }
