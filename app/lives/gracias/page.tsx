@@ -38,19 +38,19 @@ export default function GraciasPage() {
 
         {/* Botón Call to Action Final / Siguiente Paso */}
         <Link 
-          href="https://chat.whatsapp.com/TU_GRUPO_DE_WHATSAPP" 
+          href="https://forms.fillout.com/t/8iHGvaf6KDus" 
           target="_blank"
           className="group relative w-full md:w-auto rounded-lg bg-hera-magenta py-5 px-12 font-sans text-xs md:text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20"
         >
           <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
             <div className="relative h-full w-8 bg-white/20" />
           </div>
-          <span className="relative z-10">UNIRSE AL GRUPO VIP EXCLUSIVO</span>
+          <span className="relative z-10">DAR EL SIGUIENTE PASO</span>
         </Link>
         
         {/* Anti-marketing final */}
         <p className="mt-6 text-[11px] text-hera-white/40 tracking-widest uppercase font-mono border-t border-white/5 pt-4">
-          Cerraremos acceso al grupo 24 horas antes del live.
+          Asegura tu participación antes de que se agoten los cupos.
         </p>
 
       </div>
