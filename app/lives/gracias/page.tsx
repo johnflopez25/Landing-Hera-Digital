@@ -23,26 +23,17 @@ export default function GraciasPage() {
           Hacer las cosas bien requiere atención. Mira este video obligatorio (dura solo un par de minutos) donde te revelo las reglas de la clase en vivo.
         </p>
 
-        {/* Contenedor del Video (Placeholder Dinámico) */}
-        <div className="w-full relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(225,48,131,0.05)] bg-[#0a0a0a] aspect-video flex items-center justify-center group mb-12">
-          {/* Este overlay es el placeholder. Cuando pongas el Youtube Iframe, borra o comenta este overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-hera-white/30 group-hover:text-hera-magenta/60 transition-colors cursor-pointer bg-[#121212]">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="mb-4"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span className="font-sans text-xs tracking-widest uppercase font-bold text-center px-4">
-              El Embed de tu Video de YouTube va justo aquí
-            </span>
-          </div>
-
-          {/* ESTE ES EL FORMATO PARA EL VIDEO DE YOUTUBE:
+        {/* Contenedor del Video */}
+        <div className="w-full relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(225,48,131,0.05)] bg-[#0a0a0a] aspect-video mb-12">
           <iframe 
-            className="absolute top-0 left-0 w-full h-full z-10"
-            src="https://www.youtube.com/embed/RemplazarIDYoutube?autoplay=1&controls=1&rel=0&modestbranding=1" 
-            title="Video de Bienvenida" 
+            className="absolute top-0 left-0 w-full h-full z-10" 
+            src="https://www.youtube.com/embed/3oMF0W1N6FQ?si=bNUqEkS13YcJcMJ1" 
+            title="YouTube video player" 
             frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
             allowFullScreen
           ></iframe>
-           */}
         </div>
 
         {/* Botón Call to Action Final / Siguiente Paso */}
