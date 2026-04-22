@@ -334,7 +334,7 @@ export default function LivesLanding() {
                     <img 
                       src="/experto.png" 
                       alt="Experto Hera Digital" 
-                      className="w-full h-full object-cover object-bottom z-10 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 [mask-image:linear-gradient(to_top,transparent_0%,black_30%)]"
+                      className="w-full h-full object-cover object-bottom z-10 md:grayscale md:opacity-90 md:group-hover:grayscale-0 md:group-hover:opacity-100 transition-all duration-700 [mask-image:linear-gradient(to_top,transparent_0%,black_30%)]"
                     />
                   </div>
 
