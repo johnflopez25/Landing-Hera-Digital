@@ -327,17 +327,18 @@ export default function LivesLanding() {
                 </div>
 
                 {/* 3. Párrafo descriptivo base y Foto */}
-                <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-end gap-6 mt-4">
+                <div className="relative z-30 w-full flex-1 flex flex-col items-center justify-end gap-6 mt-0">
                   {/* FOTO EXPERTO */}
-                  <div className="w-full max-w-[180px] md:max-w-[200px] aspect-[3/4] rounded-xl bg-transparent border border-dashed border-white/20 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden group-hover:border-hera-magenta/30 transition-colors duration-500">
-                    <User className="w-10 h-10 text-hera-white/10 mb-2 relative z-10" />
-                    <p className="text-hera-white/30 font-sans text-[10px] tracking-widest z-10 uppercase font-bold relative">
-                      Foto Experto
-                    </p>
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none" />
+                  <div className="w-full max-w-[260px] md:max-w-[320px] aspect-[3/4] flex flex-col items-center justify-end relative group-hover:drop-shadow-[0_0_30px_rgba(225,48,131,0.2)] transition-all duration-500 -mt-16 md:-mt-28">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src="/experto.png" 
+                      alt="Experto Hera Digital" 
+                      className="w-full h-full object-cover object-bottom z-10 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 [mask-image:linear-gradient(to_top,transparent_0%,black_30%)]"
+                    />
                   </div>
 
-                  <p className="text-[13px] md:text-[14px] text-hera-white/50 font-sans leading-relaxed px-4 text-balance">
+                  <p className="text-[13px] md:text-[14px] text-hera-white/50 font-sans leading-relaxed px-4 text-balance z-40 -mt-8">
                     Un horario pensado para que puedas conectarte después de tu jornada y aterrizar, con calma, decisiones importantes para tu negocio digital.
                   </p>
                 </div>
