@@ -4,9 +4,35 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Check, Mail, User, Clock, Phone } from "lucide-react";
 import Script from "next/script";
+import { useRouter } from "next/navigation";
 
 export default function LivesLanding() {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  const handleMailerLiteSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    formData.append("ml-submit", "1");
+    formData.append("anticsrf", "true");
+
+    try {
+      await fetch("https://assets.mailerlite.com/jsonp/482562/forms/185416114496341367/subscribe", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      });
+      // El request es opaco por el no-cors, pero MailerLite recibe los datos. Redirigimos sin parpadeos:
+      router.push("/lives/gracias");
+    } catch (error) {
+      console.error(error);
+      router.push("/lives/gracias");
+    }
+  };
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -102,13 +128,10 @@ export default function LivesLanding() {
               </div>
             </div>
 
-            {/* Formulario (Integrado con MailerLite V2 JS) */}
+            {/* Formulario (Integrado Nativamente con MailerLite) */}
             <form 
-              className="flex flex-col gap-4 max-w-md mx-auto ml-block-form"
-              action="https://assets.mailerlite.com/jsonp/482562/forms/185416114496341367/subscribe"
-              data-code=""
-              method="post" 
-              target="_blank"
+              className="flex flex-col gap-4 max-w-md mx-auto"
+              onSubmit={handleMailerLiteSubmit}
             >
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
@@ -141,19 +164,16 @@ export default function LivesLanding() {
                 />
               </div>
 
-              {/* MailerLite Hidden Fields */}
-              <input type="hidden" name="ml-submit" value="1" />
-              <input type="hidden" name="anticsrf" value="true" />
-
               <button 
                 type="submit"
-                className="primary group relative w-full rounded-lg bg-hera-magenta py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden mt-2"
+                disabled={isSubmitting}
+                className={`group relative w-full rounded-lg bg-hera-magenta py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all overflow-hidden mt-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-opacity-90'}`}
               >
                 <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                   <div className="relative h-full w-8 bg-white/20" />
                 </div>
                 <span className="relative z-10 flex items-center justify-center gap-2 text-[11px] md:text-xs">
-                  QUIERO MI ACCESO AL LIVE
+                  {isSubmitting ? "PROCESANDO..." : "QUIERO MI ACCESO AL LIVE"}
                 </span>
               </button>
             </form>
@@ -444,25 +464,7 @@ export default function LivesLanding() {
         </div>
       </section>
 
-      {/* Scripts de MailerLite Integrados */}
-      <Script id="ml-success-script" strategy="lazyOnload">
-        {`
-          function ml_webform_success_40245286() {
-            try {
-              window.top.location.href = 'https://us.heradigital.pro/lives/gracias';
-            } catch (e) {
-              window.location.href = 'https://us.heradigital.pro/lives/gracias';
-            }
-          }
-        `}
-      </Script>
-      <Script 
-        src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" 
-        strategy="lazyOnload" 
-      />
-      <Script id="ml-analytics" strategy="lazyOnload">
-        {`fetch("https://assets.mailerlite.com/jsonp/482562/forms/185416114496341367/takel");`}
-      </Script>
+
 
     </main>
   );
