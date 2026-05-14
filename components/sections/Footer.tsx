@@ -1,4 +1,4 @@
-import { Linkedin, Instagram } from "lucide-react";
+import { Youtube, Instagram } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -19,16 +19,16 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.youtube.com/@heradigital"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-hera-white/50 hover:text-hera-magenta transition-colors duration-200"
-                aria-label="LinkedIn"
+                aria-label="YouTube"
               >
-                <Linkedin size={20} />
+                <Youtube size={20} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/escuelaheradigital/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-hera-white/50 hover:text-hera-magenta transition-colors duration-200"

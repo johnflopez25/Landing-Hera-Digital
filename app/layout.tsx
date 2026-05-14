@@ -6,25 +6,63 @@ import "./globals.css";
 const META_PIXEL_ID = "TU_PIXEL_ID";
 
 export const metadata: Metadata = {
-  title: "Hera Digital — Marketing de Autoridad",
+  metadataBase: new URL("https://heradigital.co"), // Cambia esto si el dominio es diferente
+  title: {
+    default: "Hera Digital | Impulsa tu Profesión y Escala tus Ventas",
+    template: "%s | Hera Digital",
+  },
   description:
-    "Convertimos expertos en referentes. Personal branding y growth marketing para profesionales y ejecutivos que buscan posicionamiento de alto nivel.",
+    "Ayudamos a profesionales y emprendedores a construir autoridad, escalar ventas y monetizar su conocimiento a través de consultoría estratégica, mentorías y Growth Marketing.",
   keywords: [
-    "personal branding",
+    "consultoría estratégica marketing",
+    "mentorías para profesionales",
+    "marca personal",
+    "productos digitales",
     "growth marketing",
     "paid ads",
-    "meta ads",
-    "google ads",
-    "agencia marketing",
-    "posicionamiento personal",
-    "marca personal",
+    "escuela de negocios digitales",
+    "posicionamiento digital",
   ],
+  authors: [{ name: "Hera Digital LLC" }],
+  creator: "Hera Digital LLC",
+  publisher: "Hera Digital LLC",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Hera Digital — Marketing de Autoridad",
-    description:
-      "Convertimos expertos en referentes. Agencia premium de personal branding y growth marketing.",
     type: "website",
     locale: "es_CO",
+    url: "https://heradigital.co",
+    title: "Hera Digital | Escuela de Negocios y Consultoría Digital",
+    description:
+      "Ayudamos a profesionales y emprendedores a construir autoridad, escalar ventas y crear productos digitales rentables.",
+    siteName: "Hera Digital",
+    images: [
+      {
+        url: "/og-image.jpg", // Asegúrate de tener una imagen en la carpeta 'public' llamada og-image.jpg (tamaño recomendado: 1200x630px)
+        width: 1200,
+        height: 630,
+        alt: "Hera Digital - Marketing y Consultoría",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hera Digital | Impulsa tu Profesión",
+    description:
+      "Convertimos expertos invisibles en referentes indiscutibles con estrategias de marketing probadas.",
+    images: ["/og-image.jpg"],
   },
 };
 

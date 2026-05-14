@@ -27,7 +27,7 @@ const testimonials = [
 
 export default function SocialProof() {
   return (
-    <section id="prueba-social" className="bg-hera-black section-pad border-t border-hera-border">
+    <section id="prueba-social" className="bg-hera-black section-pad pt-12 md:pt-24 border-t border-hera-border">
       <div className="max-content">
         {/* Metrics bar */}
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-hera-border mb-20">
@@ -38,12 +38,12 @@ export default function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="px-8 py-10 first:pl-0"
+              className="py-8 md:py-10 first:pt-0 md:first:pt-10 md:px-8 md:first:pl-0 flex flex-col items-center md:items-start text-center md:text-left"
             >
               <p className="font-serif text-5xl md:text-6xl font-black text-hera-white mb-2">
                 {m.value}
               </p>
-              <p className="font-sans text-sm text-hera-muted uppercase tracking-widest">
+              <p className="font-sans text-sm text-hera-muted uppercase tracking-widest text-balance">
                 {m.label}
               </p>
             </motion.div>
