@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Search } from "lucide-react";
 import { useState, useEffect } from "react";
+import FormModal from "../FormModal";
 
 // ─── Bezier Math ──────────────────────────────────────────────────────────────
 // viewBox 1440 × 420: curve zone y=0..300, label zone y=300..420
@@ -53,6 +54,7 @@ const STEPS_MOBILE = [
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const h = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
@@ -94,12 +96,13 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-border bg-hera-surface/60 backdrop-blur-md mb-5"
+          className="flex items-center gap-4 mb-6"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-hera-magenta animate-pulse" />
-          <span className="font-sans text-[11px] uppercase tracking-[0.15em] text-hera-white/70 font-medium">
+          <span className="w-8 md:w-12 h-px bg-hera-magenta" />
+          <span className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-hera-white/60 font-semibold">
             Escuela de negocios digitales para profesionales
           </span>
+          <span className="w-8 md:w-12 h-px bg-hera-magenta" />
         </motion.div>
 
         {/* H1 */}
@@ -120,39 +123,35 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="font-sans text-sm md:text-base text-hera-muted max-w-sm md:max-w-lg mx-auto mb-7 font-light leading-relaxed"
+          className="font-sans text-sm md:text-base text-hera-muted max-w-sm md:max-w-2xl mx-auto mb-7 font-light leading-relaxed"
         >
-          Convertimos expertos invisibles en referentes indiscutibles. Ejecución táctica con impacto medible.
+          Ayudamos a profesionales y emprendedores a construir autoridad digital, estructurar ofertas y vender servicios, mentorías y productos digitales con estrategia, contenido y sistemas de adquisición.
         </motion.p>
 
-        {/* Input CTA */}
+        {/* Simple CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="relative w-full max-w-sm md:max-w-md mx-auto group"
+          className="flex justify-center"
         >
-          <div className="absolute inset-0 rounded-full bg-hera-magenta/20 blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
-
-          {/* Mobile: stacked */}
-          <div className="flex flex-col gap-2 sm:hidden">
-            <input type="text" placeholder="URL de tu perfil de LinkedIn..."
-              className="w-full bg-hera-surface/70 backdrop-blur-xl border border-hera-border rounded-full px-5 py-3 font-sans text-hera-white placeholder:text-hera-muted text-sm outline-none text-center" />
-            <button className="w-full flex items-center justify-center gap-2 text-hera-white px-6 py-3 rounded-full font-sans text-sm font-semibold"
-              style={{ background: "linear-gradient(135deg,#E13083,#9b1f5c)", boxShadow: "0 0 20px rgba(225,48,131,0.35)" }}>
-              Auditar Marca <ArrowRight size={14} />
-            </button>
-          </div>
-
-          {/* sm+: inline pill */}
-          <div className="hidden sm:flex items-center bg-hera-surface/70 backdrop-blur-xl border border-hera-border rounded-full p-1.5">
-            <div className="pl-5 text-hera-muted"><Search size={16} /></div>
-            <input type="text" placeholder="URL de tu perfil de LinkedIn..."
-              className="flex-1 bg-transparent border-none outline-none px-4 py-2 font-sans text-hera-white placeholder:text-hera-muted text-sm focus:ring-0" />
-            <button className="flex items-center gap-2 text-hera-white px-5 py-2.5 rounded-full font-sans text-sm font-semibold hover:opacity-90 transition-opacity"
-              style={{ background: "linear-gradient(135deg,#E13083,#9b1f5c)", boxShadow: "0 0 20px rgba(225,48,131,0.35)" }}>
-              Auditar Marca <ArrowRight size={14} />
-            </button>
-          </div>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="group relative inline-flex items-center gap-3 text-hera-white font-sans text-sm md:text-base font-semibold px-8 md:px-10 py-4 overflow-hidden rounded-full transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, #E13083, #7b2fff)",
+              boxShadow: "0 0 30px rgba(225,48,131,0.35)",
+            }}
+          >
+            {/* Shine sweep on hover */}
+            <span
+              className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+              style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)" }}
+            />
+            <span className="relative z-10 flex items-center gap-3">
+              Impulsar mi profesión
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+            </span>
+          </button>
         </motion.div>
       </div>
 
@@ -268,8 +267,7 @@ export default function Hero() {
                 {n.title}
               </motion.text>
 
-              {/* Label – description */}
-              <motion.text
+                <motion.text
                 x={n.cx} y={DESC_Y}
                 textAnchor="middle"
                 fill="#6B7280"
@@ -286,6 +284,7 @@ export default function Hero() {
         </svg>
       </div>
 
+      <FormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

@@ -1,31 +1,37 @@
 "use client";
 import { motion } from "framer-motion";
-import { Layers, User, TrendingUp, Target } from "lucide-react";
+import { Target, GraduationCap, Package, Video, TrendingUp } from "lucide-react";
 
 const services = [
   {
     num: "01",
-    icon: Layers,
-    title: "Branding Estratégico",
-    desc: "No es un logo. Es cómo te percibe el mercado.",
+    icon: Target,
+    title: "Consultoría estratégica",
+    desc: "Sesiones personalizadas para diagnosticar, estructurar y optimizar modelos de negocio digitales.",
   },
   {
     num: "02",
-    icon: User,
-    title: "Personal Brand",
-    desc: "De experto invisible a referente reconocido.",
+    icon: GraduationCap,
+    title: "Mentorías y formación",
+    desc: "Programas educativos para profesionales que desean construir autoridad, vender servicios de alto valor y crear productos digitales.",
   },
   {
     num: "03",
-    icon: TrendingUp,
-    title: "Growth Marketing",
-    desc: "Crecimiento medible, no promesas vacías.",
+    icon: Package,
+    title: "Productos digitales",
+    desc: "Recursos, plantillas, frameworks y entrenamientos online de aplicación práctica.",
   },
   {
     num: "04",
-    icon: Target,
-    title: "Paid Ads",
-    desc: "Meta Ads y Google Ads. Cada peso invertido debe traer retorno. Sin excepciones.",
+    icon: Video,
+    title: "Workshops y eventos",
+    desc: "Entrenamientos en vivo sobre posicionamiento, marca personal, ventas, embudos, contenido y publicidad digital.",
+  },
+  {
+    num: "05",
+    icon: TrendingUp,
+    title: "Paid Ads & Growth",
+    desc: "Estrategia y acompañamiento para campañas de adquisición, medición y optimización.",
   },
 ];
 
@@ -57,9 +63,18 @@ export default function Services() {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-hera-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-px bg-hera-border">
           {services.map((s, i) => {
             const Icon = s.icon;
+            
+            // Asignación de columnas para simetría:
+            // Escritorio (lg): 3 arriba (span-2 c/u), 2 abajo (span-3 c/u)
+            // Tablet (md): 2 arriba, 2 medio, 1 centrado abajo (span-2)
+            const colSpanClass = 
+              i < 3 ? "md:col-span-1 lg:col-span-2" :
+              i === 3 ? "md:col-span-1 lg:col-span-3" :
+              "md:col-span-2 lg:col-span-3";
+
             return (
               <motion.div
                 key={s.num}
@@ -68,7 +83,7 @@ export default function Services() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
-                className="relative bg-hera-black p-8 group cursor-pointer overflow-hidden transition-all duration-250 hover:-translate-y-1"
+                className={`relative bg-hera-black p-8 group cursor-pointer overflow-hidden transition-all duration-250 hover:-translate-y-1 ${colSpanClass}`}
               >
                 {/* Background number */}
                 <span className="absolute top-4 right-6 font-serif text-7xl font-black text-hera-white/5 select-none leading-none">

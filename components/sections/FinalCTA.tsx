@@ -1,8 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import FormModal from "../FormModal";
 
 export default function FinalCTA() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section
       id="contacto"
@@ -73,7 +77,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-serif text-3xl md:text-5xl lg:text-6xl font-black text-hera-white mb-6 text-balance mx-auto max-w-3xl leading-tight"
         >
-          ¿Listo para que tu expertise{" "}
+          ¿Listo para que tu profesión{" "}
           <span
             className="text-transparent bg-clip-text"
             style={{ backgroundImage: "linear-gradient(90deg, #F5F5F5, #E13083)" }}
@@ -90,10 +94,10 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="font-sans text-base md:text-lg text-hera-muted mb-10 max-w-xl mx-auto"
         >
-          30 minutos. Sin compromisos. Con claridad total sobre tu próximo paso estratégico.
+          1 minuto. Sin compromisos. Con claridad total sobre tu próximo paso estratégico.
         </motion.p>
 
-        {/* CTA */}
+          {/* CTA */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -101,9 +105,9 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col items-center gap-4"
         >
-          <a
-            href="mailto:hola@heradigital.co"
-            className="relative inline-flex items-center gap-3 text-hera-white font-sans text-base font-semibold px-10 py-5 overflow-hidden group transition-all duration-300"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="relative inline-flex items-center gap-3 text-hera-white font-sans text-base font-semibold px-10 py-5 overflow-hidden group transition-all duration-300 rounded-sm"
             style={{
               background: "linear-gradient(135deg, #E13083, #7b2fff)",
               boxShadow: "0 0 30px rgba(225,48,131,0.35), 0 0 60px rgba(123,47,255,0.15)",
@@ -115,10 +119,10 @@ export default function FinalCTA() {
               style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)" }}
             />
             <span className="relative z-10 flex items-center gap-3">
-              Agenda tu sesión gratuita
+              Impulsar mi profesión
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
             </span>
-          </a>
+          </button>
 
           <p className="font-sans text-xs text-hera-muted">
             Sin costo. Sin presión. Solo claridad.
@@ -126,6 +130,7 @@ export default function FinalCTA() {
         </motion.div>
       </div>
 
+      <FormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }
