@@ -157,7 +157,7 @@ export default function About() {
         >
           {[
             { stat: "+120", label: "Proyectos ejecutados" },
-            { stat: "0px",  label: "Tolerancia a lo mediocre" },
+            { stat: "0%",  label: "Tolerancia a lo mediocre" },
             { stat: "100%", label: "Foco en resultados reales" },
           ].map((item) => (
             <div key={item.stat} className="flex flex-col items-center gap-1">

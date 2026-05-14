@@ -5,7 +5,7 @@ import { Quote } from "lucide-react";
 const metrics = [
   { value: "+120", label: "Proyectos ejecutados" },
   { value: "+3.8M", label: "Impresiones generadas" },
-  { value: "340%", label: "ROI promedio en Paid Ads" },
+  { value: "340%", label: "Retorno promedio en publicidad" },
 ];
 
 const testimonials = [
@@ -21,7 +21,7 @@ const testimonials = [
       "El ROI de mis campañas de Meta Ads creció 280% en el primer mes. Esto no es marketing, es ingeniería de crecimiento.",
     name: "Ana Restrepo",
     role: "Directora Comercial",
-    img: "https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=200&q=80",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80",
   },
 ];
 
