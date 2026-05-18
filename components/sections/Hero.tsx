@@ -176,11 +176,11 @@ export default function Hero() {
       {/* ── DESKTOP CURVE (everything inside one SVG) ─────────────────────── */}
       <div
         className="hidden md:block relative w-full flex-shrink-0"
-        style={{ height: "400px" }}
+        style={{ paddingBottom: `${(VH / VW) * 100}%`, height: 0, maxWidth: "100%" }}
       >
         <svg
           viewBox={`0 0 ${VW} ${VH}`}
-          preserveAspectRatio="none"
+          preserveAspectRatio="xMidYMid meet"
           className="absolute inset-0 w-full h-full"
           style={{ fontFamily: "'Inter', 'Playfair Display', sans-serif" }}
         >
