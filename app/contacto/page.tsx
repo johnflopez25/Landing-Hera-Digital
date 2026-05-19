@@ -21,15 +21,20 @@ export default function Contacto() {
               Para soporte, consultas comerciales o información sobre nuestros servicios, puedes escribirnos a:
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <p className="font-bold text-hera-white text-sm uppercase tracking-widest mb-2 opacity-50">Email</p>
-                <p><a href="mailto:soporte@heradigital.co" className="text-hera-magenta hover:underline transition-colors text-xl">soporte@heradigital.co</a></p>
+                <p><a href="mailto:soporte@heradigital.co" className="text-hera-magenta hover:underline transition-colors text-lg">soporte@heradigital.co</a></p>
+              </div>
+
+              <div>
+                <p className="font-bold text-hera-white text-sm uppercase tracking-widest mb-2 opacity-50">Teléfono / WhatsApp</p>
+                <p><a href="https://wa.me/573132285648" target="_blank" rel="noopener noreferrer" className="text-hera-magenta hover:underline transition-colors text-lg">+57 3132285648</a></p>
               </div>
 
               <div>
                 <p className="font-bold text-hera-white text-sm uppercase tracking-widest mb-2 opacity-50">Horario de atención</p>
-                <p>Lunes a viernes,<br/>9:00 a.m. – 5:00 p.m. hora Colombia.</p>
+                <p className="text-sm">Lunes a viernes,<br/>9:00 a.m. – 5:00 p.m. hora Colombia.</p>
               </div>
             </div>
 
