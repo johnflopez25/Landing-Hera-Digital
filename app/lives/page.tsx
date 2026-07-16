@@ -38,16 +38,16 @@ export default function LivesLanding() {
     const calculateTimeLeft = () => {
       const nowMs = new Date().getTime();
       const nowUTC = new Date();
-      const dayUTC = nowUTC.getUTCDay(); // 5 = Friday
+      const dayUTC = nowUTC.getUTCDay(); // 4 = Thursday
       
-      let daysUntilFriday = (5 - dayUTC + 7) % 7;
+      let daysUntilThursday = (4 - dayUTC + 7) % 7;
       
-      // Target is Friday 00:00:00 UTC (which equals Thursday 19:00 COT/UTC-5)
+      // Target is Thursday 23:00:00 UTC (which equals Thursday 18:00 COT/UTC-5)
       const targetUTC = new Date(Date.UTC(
          nowUTC.getUTCFullYear(),
          nowUTC.getUTCMonth(),
-         nowUTC.getUTCDate() + daysUntilFriday,
-         0, 0, 0
+         nowUTC.getUTCDate() + daysUntilThursday,
+         23, 0, 0
       ));
 
       if (nowMs >= targetUTC.getTime()) {
@@ -104,7 +104,7 @@ export default function LivesLanding() {
       </header>
 
       {/* ── CONTENIDO PRINCIPAL (Card Central) ── */}
-      <section className="flex-1 flex flex-col items-center justify-center pt-32 pb-20 px-4 z-10">
+      <section id="registro" className="flex-1 flex flex-col items-center justify-center pt-32 pb-20 px-4 z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,7 +123,7 @@ export default function LivesLanding() {
               </h1>
               <div className="flex justify-center text-hera-white/70 font-sans leading-relaxed">
                 <p className="text-[15px] md:text-[17px] max-w-2xl px-4 md:px-0">
-                  Cada jueves a las 7:00 p. m. (hora Colombia) comparto en vivo estrategias, sistemas y decisiones reales para que psicólogos, médicos, odontólogos y otros profesionales construyan un negocio digital <strong className="text-hera-white font-semibold">sin depender todo el tiempo de consultas 1 a 1.</strong>
+                  Cada jueves a las 6:00 p. m. (hora Colombia) comparto en vivo estrategias, sistemas y decisiones reales para que psicólogos, médicos, odontólogos y otros profesionales construyan un negocio digital <strong className="text-hera-white font-semibold">sin depender todo el tiempo de consultas 1 a 1.</strong>
                 </p>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function LivesLanding() {
                     <div className="flex flex-col gap-1 items-center">
                       <span className="font-serif text-3xl font-bold text-hera-white uppercase tracking-wider">Jueves</span>
                       <span className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-hera-white to-hera-white/50 tracking-tighter drop-shadow-md my-2">
-                        7:00 <span className="text-2xl text-hera-white/60">P.M.</span>
+                        6:00 <span className="text-2xl text-hera-white/60">P.M.</span>
                       </span>
                       <span className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-hera-magenta mt-1">
                         Hora Colombia
@@ -360,6 +360,25 @@ export default function LivesLanding() {
 
           </div>
 
+        </div>
+      </section>
+
+      {/* ── CTA INTERMEDIO ── */}
+      <section className="w-full py-16 px-4 z-10 relative bg-[#0a0a0a] border-t border-white/5">
+        <div className="max-w-2xl mx-auto flex flex-col items-center text-center gap-6">
+          <p className="text-hera-white/60 font-sans text-[15px] md:text-[17px] leading-relaxed">
+            Si ya tienes claridad de que esto es para ti,{" "}
+            <span className="text-hera-white font-semibold">no esperes más.</span>
+          </p>
+          <a
+            href="#registro"
+            className="group relative rounded-lg bg-hera-magenta py-4 px-10 font-sans text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20 inline-block cursor-pointer"
+          >
+            <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
+              <div className="relative h-full w-8 bg-white/20" />
+            </div>
+            <span className="relative z-10">QUIERO MI ACCESO AL LIVE &rarr;</span>
+          </a>
         </div>
       </section>
 
