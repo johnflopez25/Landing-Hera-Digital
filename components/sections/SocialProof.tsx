@@ -5,7 +5,7 @@ import { Quote } from "lucide-react";
 const metrics = [
   { value: "+120", label: "Proyectos ejecutados" },
   { value: "+3.8M", label: "Impresiones generadas" },
-  { value: "340%", label: "Retorno promedio en publicidad" },
+  { value: "ROI", label: "Campañas orientadas a retorno medible" },
 ];
 
 const testimonials = [
@@ -18,7 +18,7 @@ const testimonials = [
   },
   {
     quote:
-      "El ROI de mis campañas de Meta Ads creció 280% en el primer mes. Esto no es marketing, es ingeniería de crecimiento.",
+      "Hera Digital nos ayudó a ordenar nuestra estrategia, mejorar la comunicación de la oferta y tomar decisiones de marketing con más claridad.",
     name: "Ana Restrepo",
     role: "Directora Comercial",
     img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80",

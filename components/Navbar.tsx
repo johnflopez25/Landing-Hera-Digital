@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Proceso", href: "/#proceso" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export default function Navbar() {
@@ -30,7 +30,7 @@ export default function Navbar() {
     >
       <nav className="max-content px-6 md:px-12 lg:px-24 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-1 group">
+        <a href="/" className="flex items-center gap-1 group">
           <span className="font-serif text-xl font-black text-hera-white tracking-tight">
             HERA
           </span>
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="#contacto"
+          href="/contacto"
           className="hidden md:inline-flex items-center gap-2 bg-hera-magenta hover:bg-hera-magenta-dark text-hera-white font-sans text-sm font-semibold px-5 py-2.5 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(225,48,131,0.3)]"
         >
           Agenda tu sesión →

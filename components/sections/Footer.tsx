@@ -44,12 +44,18 @@ export default function Footer() {
             <h4 className="font-sans text-xs font-bold text-hera-white uppercase tracking-widest mb-6">
               Empresa
             </h4>
-            <div className="font-sans text-sm text-hera-white/60 flex flex-col gap-3">
+            <div className="font-sans text-sm text-hera-white/60 flex flex-col gap-3 items-start">
               <p className="text-hera-white">Hera Digital LLC</p>
               <p>Florida, United States</p>
               <a href="mailto:soporte@heradigital.co" className="hover:text-hera-magenta transition-colors">
                 soporte@heradigital.co
               </a>
+              <Link 
+                href="/contacto" 
+                className="mt-2 inline-flex items-center justify-center px-4 py-2 border border-white/10 hover:border-hera-magenta text-hera-white text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-hera-magenta/10 rounded-full"
+              >
+                Página de Contacto
+              </Link>
             </div>
           </div>
 
