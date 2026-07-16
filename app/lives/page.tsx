@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Check, Mail, User, Clock, Phone } from "lucide-react";
+import { Check, Mail, User, Clock, Phone, Briefcase } from "lucide-react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
 
@@ -159,6 +159,16 @@ export default function LivesLanding() {
                   type="text" 
                   name="fields[phone]"
                   placeholder="Tu WhatsApp *" 
+                  required
+                  className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
+                />
+              </div>
+              <div className="relative">
+                <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
+                <input 
+                  type="text" 
+                  name="fields[profession]"
+                  placeholder="Tu profesión *" 
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
