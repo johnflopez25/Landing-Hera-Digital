@@ -5,6 +5,9 @@ import "./globals.css";
 // ─── Cambia este valor por tu Pixel ID real de Meta ───────────────────────────
 const META_PIXEL_ID = "TU_PIXEL_ID";
 
+// ─── Cambia este valor por tu Measurement ID real de GA4 (formato G-XXXXXXXXXX) ─
+const GA4_MEASUREMENT_ID = "TU_GA4_ID";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://heradigital.co"), // Cambia esto si el dominio es diferente
   title: {
@@ -108,6 +111,24 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+
+        {/* ── Google Analytics 4 (gtag.js) ───────────────────────────────── */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga4-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA4_MEASUREMENT_ID}');
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -38,15 +38,15 @@ export default function LivesLanding() {
     const calculateTimeLeft = () => {
       const nowMs = new Date().getTime();
       const nowUTC = new Date();
-      const dayUTC = nowUTC.getUTCDay(); // 4 = Thursday
-      
-      let daysUntilThursday = (4 - dayUTC + 7) % 7;
-      
-      // Target is Thursday 23:00:00 UTC (which equals Thursday 18:00 COT/UTC-5)
+      const dayUTC = nowUTC.getUTCDay(); // 1 = Lunes (Monday)
+
+      let daysUntilMonday = (1 - dayUTC + 7) % 7;
+
+      // Target is Monday 23:00:00 UTC (which equals Monday 18:00 COT/UTC-5)
       const targetUTC = new Date(Date.UTC(
          nowUTC.getUTCFullYear(),
          nowUTC.getUTCMonth(),
-         nowUTC.getUTCDate() + daysUntilThursday,
+         nowUTC.getUTCDate() + daysUntilMonday,
          23, 0, 0
       ));
 
@@ -80,7 +80,7 @@ export default function LivesLanding() {
       <header className="w-full bg-[#0a0a0a] border-b border-white/5 py-4 px-6 fixed top-0 z-50 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 backdrop-blur-md">
         <div className="flex items-center gap-2 text-hera-white/70 text-xs font-medium tracking-wider uppercase">
           <Clock className="w-4 h-4 text-hera-magenta" />
-          La clase en directo comienza en...
+          La Sala de Estrategia comienza en...
         </div>
 
         {/* Bloques de tiempo */}
@@ -117,13 +117,16 @@ export default function LivesLanding() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-hera-black via-hera-magenta to-hera-black opacity-50" />
 
             <div className="text-center mb-10">
+              <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-magenta/90 mb-4 block">
+                Sala de Estrategia · En vivo por YouTube
+              </span>
               <h1 className="font-serif text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight mb-6">
-                Descubre cómo convertir tu conocimiento profesional en un{" "}
-                <span className="text-hera-magenta inline-block italic">negocio digital rentable</span>.
+                Si paras de trabajar,{" "}
+                <span className="text-hera-magenta inline-block italic">dejas de facturar</span>.
               </h1>
               <div className="flex justify-center text-hera-white/70 font-sans leading-relaxed">
                 <p className="text-[15px] md:text-[17px] max-w-2xl px-4 md:px-0">
-                  Cada jueves a las 6:00 p. m. (hora Colombia) comparto en vivo estrategias, sistemas y decisiones reales para que psicólogos, médicos, odontólogos y otros profesionales construyan un negocio digital <strong className="text-hera-white font-semibold">sin depender todo el tiempo de consultas 1 a 1.</strong>
+                  Cada lunes a las 6:00 p. m. (hora Colombia) entra en vivo a la Sala de Estrategia: el espacio semanal y gratuito donde médicos, psicólogos, abogados, arquitectos y otros profesionales con experiencia descubren su techo real y aprenden a convertir lo que ya saben en <strong className="text-hera-white font-semibold">oferta, sistema y activos propios</strong> — sin depender solo de vender su tiempo.
                 </p>
               </div>
             </div>
@@ -183,7 +186,7 @@ export default function LivesLanding() {
                   <div className="relative h-full w-8 bg-white/20" />
                 </div>
                 <span className="relative z-10 flex items-center justify-center gap-2 text-[11px] md:text-xs">
-                  {isSubmitting ? "PROCESANDO..." : "QUIERO MI ACCESO AL LIVE"}
+                  {isSubmitting ? "PROCESANDO..." : "QUIERO MI LUGAR EN LA SALA"}
                 </span>
               </button>
             </form>
@@ -194,7 +197,7 @@ export default function LivesLanding() {
             <div className="bg-[#1A1A1A] border border-white/5 rounded-b-xl py-5 px-6 text-center shadow-lg">
               <p className="text-sm md:text-[15px] text-hera-white/80 leading-relaxed max-w-[90%] mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse hidden md:block"></span>
-                Recibirás acceso, recordatorios y novedades por WhatsApp y correo electrónico.
+                Recibirás el enlace directo, recordatorios y la Bitácora de la sesión por WhatsApp y correo electrónico.
               </p>
             </div>
           </div>
@@ -206,30 +209,30 @@ export default function LivesLanding() {
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-hera-white text-center mb-12 md:mb-16 max-w-3xl leading-snug">
-            ¿Sientes que tu conocimiento <span className="text-hera-magenta italic">vale mucho más</span> de lo que hoy estás monetizando?
+            ¿Tu freno real es de <span className="text-hera-magenta italic">conocimiento, oferta o sistema</span>? Esta semana lo descubres.
           </h2>
 
-          {/* Grid de 3 tarjetas estilo "brutalismo premium" oscuro */}
+          {/* Grid de 3 tarjetas estilo "brutalismo premium" oscuro — Test de los 3 Techos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 p-px rounded-xl overflow-hidden w-full max-w-5xl text-left md:text-center">
-            {/* Card 1 */}
+            {/* Techo 1 — Conocimiento */}
             <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
               <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">1</span>
               <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
-                Esto es para ti si eres profesional y sientes que tu conocimiento <strong className="text-hera-white font-semibold">vale más de lo que hoy estás monetizando.</strong>
+                Sientes que te falta <strong className="text-hera-white font-semibold">un curso o certificado más</strong> antes de cobrar lo que realmente vales.
               </p>
             </div>
-            {/* Card 2 */}
+            {/* Techo 2 — Oferta */}
             <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
               <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">2</span>
               <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
-                Tal vez ya tienes experiencia, resultados y criterio profesional. Pero todavía no has logrado convertir eso en <strong className="text-hera-white font-semibold">una oferta digital clara, rentable y escalable.</strong>
+                Sabes resolver el problema de tus clientes, pero todavía no lo tienes <strong className="text-hera-white font-semibold">empaquetado en una oferta clara y vendible.</strong>
               </p>
             </div>
-            {/* Card 3 */}
+            {/* Techo 3 — Sistema */}
             <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
               <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">3</span>
               <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
-                En estos lives vas a entender cómo estructurar un <strong className="text-hera-white font-semibold">modelo de negocio digital serio</strong>, simple y alineado con tu perfil profesional.
+                Tu oferta es clara, pero tus clientes solo llegan por recomendación y <strong className="text-hera-white font-semibold">si dejas de buscarlos, se detienen.</strong>
               </p>
             </div>
           </div>
@@ -250,17 +253,17 @@ export default function LivesLanding() {
                   El Programa en Vivo
                 </span>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white leading-tight mb-10">
-                  ¿Qué vas a ver en <span className="text-hera-magenta italic">estos lives?</span>
+                  ¿Qué vas a ver en la <span className="text-hera-magenta italic">Sala de Estrategia?</span>
                 </h2>
 
                 <ul className="space-y-6 text-hera-white/80 font-sans text-[15px] md:text-base">
                   {[
-                    "Cómo transformar tu experiencia profesional en una oferta digital de alto valor",
-                    "Qué modelo de negocio digital funciona mejor para profesionales",
-                    "Cómo vender mentorías, consultorías o programas sin volverte influencer",
-                    "Qué errores frenan a la mayoría cuando intenta monetizar su conocimiento",
-                    "Cómo construir un sistema más liviano, rentable y estratégico",
-                    "Cómo empezar aunque todavía no tengas una audiencia grande"
+                    "El Test de los 3 Techos: el diagnóstico en vivo que revela si tu freno es de conocimiento, oferta o sistema",
+                    "Cómo transformar tu experiencia profesional en una oferta clara y vendible",
+                    "Por qué el mercado no premia a quien más sabe, sino a quien mejor se distribuye",
+                    "Qué modelo de negocio digital funciona mejor para un profesional con experiencia",
+                    "Cómo construir un sistema de adquisición que no dependa de la recomendación de boca en boca",
+                    "El primer movimiento que puedes hacer esta misma semana, sin esperar a saber más"
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-4">
                       <div className="mt-1 bg-hera-magenta/10 p-1 rounded-full border border-hera-magenta/30 shadow-[0_0_10px_rgba(225,48,131,0.2)]">
@@ -279,14 +282,14 @@ export default function LivesLanding() {
                   
                 </h3>
                 <h4 className="font-serif text-2xl md:text-3xl font-bold text-hera-white mb-6">
-                  No es teoría. Es lo que estamos construyendo en Hera Digital.
+                  No es teoría. Es el sistema que estamos construyendo en Hera Digital.
                 </h4>
                 <div className="text-hera-white/60 font-sans text-sm md:text-[15px] space-y-4">
                   <p>
-                    Estos lives están diseñados desde la experiencia real de construir ofertas, contenidos y sistemas de adquisición para profesionales que quieren independencia, posicionamiento y mejores ingresos.
+                    La Sala de Estrategia es el espacio semanal donde ayudamos a profesionales con experiencia real a convertirse en <strong className="text-hera-white font-semibold">Estrategas Profesionales</strong>: dueños de su posicionamiento, su oferta, su audiencia y sus activos, en lugar de depender de que otros decidan por ellos.
                   </p>
                   <p className="text-hera-white font-semibold italic border-l-2 border-hera-magenta/50 pl-4 py-1">
-                    "No vas a entrar a escuchar motivación vacía. Vas a entrar a entender estructura, estrategia y ejecución."
+                    "No vas a entrar a escuchar motivación vacía. Vas a entrar a tomar una mejor decisión sobre tu negocio."
                   </p>
                 </div>
               </div>
@@ -304,9 +307,9 @@ export default function LivesLanding() {
                 <div className="relative z-10 w-full mb-8">
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-magenta/20 bg-hera-magenta/5 mb-6">
                     <span className="w-2 h-2 rounded-full bg-hera-magenta animate-pulse" />
-                    <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-hera-magenta/90">Transmisión Semanal</span>
+                    <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-hera-magenta/90">Sala Semanal · YouTube en Vivo</span>
                   </div>
-                  
+
                   <h4 className="font-serif text-2xl font-bold text-hera-white leading-tight mb-2">
                     Reserva este espacio <br className="hidden lg:block" /> cada semana
                   </h4>
@@ -325,7 +328,7 @@ export default function LivesLanding() {
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-hera-magenta to-transparent opacity-50" />
                     
                     <div className="flex flex-col gap-1 items-center">
-                      <span className="font-serif text-3xl font-bold text-hera-white uppercase tracking-wider">Jueves</span>
+                      <span className="font-serif text-3xl font-bold text-hera-white uppercase tracking-wider">Lunes</span>
                       <span className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-hera-white to-hera-white/50 tracking-tighter drop-shadow-md my-2">
                         6:00 <span className="text-2xl text-hera-white/60">P.M.</span>
                       </span>
@@ -349,7 +352,7 @@ export default function LivesLanding() {
                   </div>
 
                   <p className="text-[13px] md:text-[14px] text-hera-white/50 font-sans leading-relaxed px-4 text-balance z-40 -mt-8">
-                    Un horario pensado para que puedas conectarte después de tu jornada y aterrizar, con calma, decisiones importantes para tu negocio digital.
+                    Un horario pensado para que puedas conectarte después de tu jornada y tomar, con calma, decisiones importantes para tu negocio.
                   </p>
                 </div>
                 
@@ -367,8 +370,8 @@ export default function LivesLanding() {
       <section className="w-full py-16 px-4 z-10 relative bg-[#0a0a0a] border-t border-white/5">
         <div className="max-w-2xl mx-auto flex flex-col items-center text-center gap-6">
           <p className="text-hera-white/60 font-sans text-[15px] md:text-[17px] leading-relaxed">
-            Si ya tienes claridad de que esto es para ti,{" "}
-            <span className="text-hera-white font-semibold">no esperes más.</span>
+            Si ya sientes que tu conocimiento vale más de lo que hoy facturas,{" "}
+            <span className="text-hera-white font-semibold">no esperes al próximo lunes para descubrir por qué.</span>
           </p>
           <a
             href="#registro"
@@ -377,7 +380,7 @@ export default function LivesLanding() {
             <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
               <div className="relative h-full w-8 bg-white/20" />
             </div>
-            <span className="relative z-10">QUIERO MI ACCESO AL LIVE &rarr;</span>
+            <span className="relative z-10">QUIERO MI LUGAR EN LA SALA &rarr;</span>
           </a>
         </div>
       </section>
@@ -387,7 +390,7 @@ export default function LivesLanding() {
         <div className="max-w-3xl mx-auto flex flex-col items-center">
           
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-hera-white text-center mb-12 md:mb-16 leading-tight">
-            Estos lives <span className="text-hera-magenta italic">no son</span> para todo el mundo
+            La Sala de Estrategia <span className="text-hera-magenta italic">no es</span> para todo el mundo
           </h2>
 
           <div className="flex flex-col gap-6 w-full">
@@ -397,7 +400,7 @@ export default function LivesLanding() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </div>
               <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed">
-                No es para personas que buscan <strong className="text-hera-white font-semibold">dinero rápido</strong> sin construir nada sólido.
+                No es para quien busca <strong className="text-hera-white font-semibold">un curso o certificado más</strong> antes de empezar a cobrar lo que vale.
               </p>
             </div>
 
@@ -407,7 +410,7 @@ export default function LivesLanding() {
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </div>
               <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed">
-                No es para quien quiere seguir consumiendo contenido <strong className="text-hera-white font-semibold">sin ejecutar</strong>.
+                No es para quien quiere seguir consumiendo contenido <strong className="text-hera-white font-semibold">sin ejecutar el primer movimiento</strong>.
               </p>
             </div>
 
@@ -423,7 +426,7 @@ export default function LivesLanding() {
                     Esto SÍ es para ti
                   </span>
                   <p className="text-hera-white/90 font-sans text-[15px] md:text-[17px] leading-relaxed">
-                    Sí es para profesionales que quieren <strong className="text-hera-white font-bold">pensar mejor, estructurar mejor y construir un negocio digital con criterio.</strong>
+                    Sí es para profesionales con experiencia real que quieren pensar como <strong className="text-hera-white font-bold">Estrategas: dueños de su oferta, su sistema y su negocio digital.</strong>
                   </p>
                 </div>
               </div>
@@ -437,10 +440,10 @@ export default function LivesLanding() {
       <section className="w-full bg-hera-black pt-20 flex flex-col items-center relative z-10 border-t border-white/5">
         <div className="max-w-5xl mx-auto text-center px-4 mb-20 w-full">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white mb-6 leading-tight max-w-3xl mx-auto">
-            Cada jueves puede convertirse en una <span className="text-hera-magenta italic">decisión importante</span> para tu futuro profesional
+            Cada lunes puede ser la sesión donde por fin ves tu <span className="text-hera-magenta italic">techo real</span>
           </h2>
           <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed max-w-2xl mx-auto mb-12">
-            Si quieres dejar de improvisar y empezar a construir un negocio digital con dirección, este espacio es para ti.
+            Si quieres dejar de vender solo tu tiempo y empezar a construir activos que no dependan de ti trabajando mañana, este es tu espacio.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
@@ -461,7 +464,7 @@ export default function LivesLanding() {
               <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                 <div className="relative h-full w-8 bg-white/20" />
               </div>
-              <span className="relative z-10">QUIERO ENTRAR AL LIVE DEL JUEVES</span>
+              <span className="relative z-10">QUIERO ENTRAR A LA SALA DEL LUNES</span>
             </button>
 
             {/* Íconos Derecha */}

@@ -7,12 +7,16 @@ const encodeSans = Encode_Sans_Semi_Expanded({
 });
 
 export const metadata: Metadata = {
-  title: "Clases en Vivo para Profesionales — Hera Digital",
+  title: "Sala de Estrategia — Hera Digital",
   description:
-    "Descubre cómo estructurar y monetizar tu conocimiento en un negocio digital rentable. Estrategias semanales en vivo para psicólogos, médicos y profesionales.",
+    "Si paras, no facturas. Cada lunes a las 6:00 p. m. (hora Colombia) descubre en vivo tu techo real -conocimiento, oferta o sistema- y aprende a convertir tu experiencia profesional en activos propios.",
+  alternates: {
+    // Canonical hacia el subdominio dedicado, para evitar contenido duplicado con /lives
+    canonical: "https://saladeestrategia.heradigital.co",
+  },
   openGraph: {
-    title: "Clases en Vivo: Negocios Digitales para Profesionales — Hera Digital",
-    description: "Cada jueves en vivo: estrategias reales para convertir tu experiencia en una oferta digital clara y escalable, sin depender de la consulta 1 a 1.",
+    title: "Sala de Estrategia: el live semanal de Hera Digital para profesionales",
+    description: "Cada lunes en vivo por YouTube: estrategias reales para convertir tu experiencia en oferta, sistema y activos propios, sin depender solo de vender tu tiempo.",
     type: "website",
     locale: "es_CO",
   },

@@ -1,9 +1,23 @@
 import { Check } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function GraciasPage() {
   return (
     <main className="min-h-screen bg-hera-black flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* ── Evento de conversión (Registro completado) ──────────────────── */}
+      {/* Se dispara aquí porque esta página solo se alcanza tras un envío exitoso del formulario */}
+      <Script
+        id="lead-conversion"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            if (window.fbq) { fbq('track', 'Lead'); }
+            if (window.gtag) { gtag('event', 'generate_lead', { event_category: 'Sala de Estrategia', event_label: 'Registro completado' }); }
+          `,
+        }}
+      />
+
       {/* Background Glow Premium */}
       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[500px] bg-hera-magenta/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -20,7 +34,7 @@ export default function GraciasPage() {
           Casi listo. <span className="text-hera-magenta italic">Falta un paso más.</span>
         </h1>
         <p className="text-hera-white/70 font-sans text-[15px] md:text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-          Hacer las cosas bien requiere atención. Mira este video obligatorio (dura solo un par de minutos) donde te revelo las reglas de la clase en vivo.
+          Hacer las cosas bien requiere atención. Mira este video obligatorio (dura solo un par de minutos) donde te revelo las reglas de la Sala de Estrategia.
         </p>
 
         {/* Contenedor del Video */}
