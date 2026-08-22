@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 // ─── Cambia este valor por tu Pixel ID real de Meta ───────────────────────────
-const META_PIXEL_ID = "TU_PIXEL_ID";
+const META_PIXEL_ID = "1503224690167325";
 
 // ─── Cambia este valor por tu Measurement ID real de GA4 (formato G-XXXXXXXXXX) ─
 const GA4_MEASUREMENT_ID = "TU_GA4_ID";
