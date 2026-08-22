@@ -6,7 +6,7 @@ import "./globals.css";
 const META_PIXEL_ID = "1503224690167325";
 
 // ─── Cambia este valor por tu Measurement ID real de GA4 (formato G-XXXXXXXXXX) ─
-const GA4_MEASUREMENT_ID = "TU_GA4_ID";
+const GA4_MEASUREMENT_ID = "G-189SJ0BMGQ";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://heradigital.co"), // Cambia esto si el dominio es diferente
