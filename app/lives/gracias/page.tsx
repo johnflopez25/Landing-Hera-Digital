@@ -38,15 +38,15 @@ export default function GraciasPage() {
         </p>
 
         {/* Botón Call to Action Final / Siguiente Paso */}
-        <Link 
-          href="https://forms.fillout.com/t/8iHGvaf6KDus" 
+        <Link
+          href="https://chat.whatsapp.com/BDGxUIHordc5yZJLAsUZDp"
           target="_blank"
           className="group relative w-full md:w-auto rounded-lg bg-hera-magenta py-5 px-12 font-sans text-xs md:text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20"
         >
           <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
             <div className="relative h-full w-8 bg-white/20" />
           </div>
-          <span className="relative z-10">DAR EL SIGUIENTE PASO</span>
+          <span className="relative z-10">ENTRAR AL GRUPO DE WHATSAPP</span>
         </Link>
         
         {/* Anti-marketing final */}
