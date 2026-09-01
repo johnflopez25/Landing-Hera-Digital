@@ -5,12 +5,12 @@ export default function TermsAndConditionsPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-hera-white py-24 px-6 md:px-12 font-sans relative overflow-hidden">
       {/* Glow background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-hera-magenta/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-hera-red/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-3xl mx-auto relative z-10">
         <Link 
           href="/" 
-          className="inline-flex items-center gap-2 text-hera-magenta hover:text-white transition-colors mb-12 text-xs font-bold uppercase tracking-widest"
+          className="inline-flex items-center gap-2 text-hera-red hover:text-white transition-colors mb-12 text-xs font-bold uppercase tracking-widest"
         >
           <ArrowLeft size={16} /> Volver al inicio
         </Link>
@@ -44,7 +44,7 @@ export default function TermsAndConditionsPage() {
           </p>
 
           <p>
-            Para consultas, puedes escribir a <a href="mailto:soporte@heradigital.co" className="text-hera-magenta hover:underline">soporte@heradigital.co</a>.
+            Para consultas, puedes escribir a <a href="mailto:soporte@heradigital.co" className="text-hera-red hover:underline">soporte@heradigital.co</a>.
           </p>
         </div>
       </div>

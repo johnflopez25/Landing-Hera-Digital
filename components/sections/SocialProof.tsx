@@ -74,7 +74,7 @@ export default function SocialProof() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="bg-hera-surface border border-hera-border p-8 flex flex-col gap-6"
             >
-              <Quote size={28} className="text-hera-magenta flex-shrink-0" />
+              <Quote size={28} className="text-hera-red flex-shrink-0" />
               <p className="font-sans text-base text-hera-white/90 leading-relaxed flex-1 italic">
                 "{t.quote}"
               </p>

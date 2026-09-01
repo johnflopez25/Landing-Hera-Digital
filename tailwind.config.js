@@ -13,8 +13,8 @@ module.exports = {
           border: "#2A2A2A",
           white: "#F5F5F5",
           muted: "#6B7280",
-          magenta: "#E13083",
-          "magenta-dark": "#c8276f",
+          red: "#E1302E",
+          "red-dark": "#C22625",
         },
       },
       fontFamily: {
@@ -22,8 +22,8 @@ module.exports = {
         sans: ["'Inter'", "system-ui", "sans-serif"],
       },
       backgroundImage: {
-        "magenta-glow":
-          "radial-gradient(ellipse at center, rgba(225,48,131,0.08) 0%, transparent 70%)",
+        "red-glow":
+          "radial-gradient(ellipse at center, rgba(225, 48, 46,0.08) 0%, transparent 70%)",
       },
       keyframes: {
         fadeUp: {

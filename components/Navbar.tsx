@@ -34,7 +34,7 @@ export default function Navbar() {
           <span className="font-serif text-xl font-black text-hera-white tracking-tight">
             HERA
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-hera-magenta group-hover:scale-125 transition-transform duration-200" />
+          <span className="w-1.5 h-1.5 rounded-full bg-hera-red group-hover:scale-125 transition-transform duration-200" />
         </a>
 
         {/* Desktop links */}
@@ -54,7 +54,7 @@ export default function Navbar() {
         {/* CTA */}
         <a
           href="/contacto"
-          className="hidden md:inline-flex items-center gap-2 bg-hera-magenta hover:bg-hera-magenta-dark text-hera-white font-sans text-sm font-semibold px-5 py-2.5 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(225,48,131,0.3)]"
+          className="hidden md:inline-flex items-center gap-2 bg-hera-red hover:bg-hera-red-dark text-hera-white font-sans text-sm font-semibold px-5 py-2.5 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(225, 48, 46,0.3)]"
         >
           Agenda tu sesión →
         </a>
@@ -95,7 +95,7 @@ export default function Navbar() {
             <a
               href="#contacto"
               onClick={() => setOpen(false)}
-              className="block text-center bg-hera-magenta text-hera-white font-sans text-sm font-semibold px-5 py-3 cursor-pointer"
+              className="block text-center bg-hera-red text-hera-white font-sans text-sm font-semibold px-5 py-3 cursor-pointer"
             >
               Agenda tu sesión →
             </a>

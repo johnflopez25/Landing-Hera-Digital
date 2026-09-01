@@ -57,13 +57,13 @@ export default function Process() {
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="lg:pr-10"
               >
-                {/* Number with magenta dot above line */}
+                {/* Number with red dot above line */}
                 <div className="relative mb-8">
-                  <span className="font-serif text-5xl font-black text-hera-magenta leading-none">
+                  <span className="font-serif text-5xl font-black text-hera-red leading-none">
                     {step.num}
                   </span>
                   {/* Dot on the connector line */}
-                  <div className="hidden lg:block absolute top-8 -right-0 w-2 h-2 rounded-full bg-hera-magenta" />
+                  <div className="hidden lg:block absolute top-8 -right-0 w-2 h-2 rounded-full bg-hera-red" />
                 </div>
 
                 <h3 className="font-serif text-xl font-bold text-hera-white mb-3">

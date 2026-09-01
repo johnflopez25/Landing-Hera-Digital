@@ -42,7 +42,7 @@ El usuario debe sentir en menos de 5 segundos:
 |---|---|---|
 | `hera-black` | `#121212` | Fondo principal (Onyx Black) |
 | `hera-white` | `#F5F5F5` | Texto principal (Alabaster) |
-| `hera-magenta` | `#E13083` | CTAs, acentos, énfasis (Magenta) |
+| `hera-red` | `#E1302E` | CTAs, acentos, énfasis (Rojo) |
 | `hera-gray` | `#2A2A2A` | Superficies de cards, separadores |
 
 ### Tipografía
@@ -218,7 +218,7 @@ UX rules, anti-patrones         Iterar hasta aprobar             con animaciones
 ### Prompts de Stitch — estilo obligatorio
 
 Cada prompt a Stitch debe incluir:
-- Paleta exacta: fondo `#121212`, texto `#F5F5F5`, acento `#E13083`
+- Paleta exacta: fondo `#121212`, texto `#F5F5F5`, acento `#E1302E`
 - Tipografía: Playfair Display para headings, Inter para body
 - Estilo: minimalista, dark mode, espacio negativo, fotografía en escala de grises
 - Contenido: copy exacto de la sección (sin placeholders)

@@ -36,19 +36,19 @@ body {
   background: #121212;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E13083;
+  background: #E1302E;
   border-radius: 2px;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(225, 48, 131, 0.3);
+  background: rgba(225, 48, 46, 0.3);
   color: #F5F5F5;
 }
 
 /* Focus visible */
 :focus-visible {
-  outline: 2px solid #E13083;
+  outline: 2px solid #E1302E;
   outline-offset: 2px;
 }
 
@@ -57,7 +57,7 @@ body {
     text-wrap: balance;
   }
   .eyebrow {
-    @apply font-sans text-xs font-semibold tracking-[0.2em] uppercase text-hera-magenta;
+    @apply font-sans text-xs font-semibold tracking-[0.2em] uppercase text-hera-red;
   }
   .section-pad {
     @apply px-6 py-24 md:px-12 lg:px-24;

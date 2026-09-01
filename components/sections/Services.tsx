@@ -94,7 +94,7 @@ export default function Services() {
                 <div className="mb-6">
                   <Icon
                     size={22}
-                    className="text-hera-magenta transition-transform duration-200 group-hover:scale-110"
+                    className="text-hera-red transition-transform duration-200 group-hover:scale-110"
                   />
                 </div>
 
@@ -106,8 +106,8 @@ export default function Services() {
                   {s.desc}
                 </p>
 
-                {/* Bottom magenta accent on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-hera-magenta scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                {/* Bottom red accent on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-hera-red scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </motion.div>
             );
           })}

@@ -20,12 +20,12 @@
 |------|-----|--------------|-------|
 | Background | `#121212` | `--color-background` | Onyx Black — base de todo |
 | Text Primary | `#F5F5F5` | `--color-text` | Alabaster — texto principal |
-| CTA / Accent | `#E13083` | `--color-cta` | Magenta — botones, énfasis, acentos |
+| CTA / Accent | `#E1302E` | `--color-cta` | Rojo — botones, énfasis, acentos |
 | Surface | `#1E1E1E` | `--color-surface` | Cards, paneles |
 | Border | `#2A2A2A` | `--color-border` | Separadores, bordes de cards |
 | Text Muted | `#6B7280` | `--color-muted` | Texto secundario, captions |
 
-**Color Notes:** Dark editorial. Alto contraste. Magenta como único color de acción. Sin colores adicionales.
+**Color Notes:** Dark editorial. Alto contraste. Rojo como único color de acción. Sin colores adicionales.
 
 ### Typography
 
@@ -72,7 +72,7 @@
 | `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.3)` | Subtle lift |
 | `--shadow-md` | `0 4px 6px rgba(0,0,0,0.4)` | Cards, buttons |
 | `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.5)` | Modals, dropdowns |
-| `--shadow-magenta` | `0 0 24px rgba(225,48,131,0.2)` | Accent glow on hover |
+| `--shadow-red` | `0 0 24px rgba(225,48,46,0.2)` | Accent glow on hover |
 
 ---
 
@@ -186,8 +186,8 @@
 
 **Key Effects:**
 - Fade + slide on scroll (`y: 24px → 0`, duration: 0.5s, `once: true`)
-- Hover border magenta en cards (250ms)
-- Magenta glow en CTAs al hover
+- Hover border rojo en cards (250ms)
+- Glow rojo en CTAs al hover
 - Frosted glass en navbar al scroll (`backdrop-filter: blur(20px)`)
 
 ### Page Pattern

@@ -9,7 +9,7 @@ export default function Contacto() {
       <Navbar />
       <section className="bg-hera-black pt-32 pb-24 min-h-[80vh] relative">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
-          <Link href="/" className="inline-flex items-center gap-2 text-hera-white/60 hover:text-hera-magenta transition-colors mb-8 text-sm uppercase tracking-widest font-semibold">
+          <Link href="/" className="inline-flex items-center gap-2 text-hera-white/60 hover:text-hera-red transition-colors mb-8 text-sm uppercase tracking-widest font-semibold">
             <ArrowLeft size={16} />
             Volver al inicio
           </Link>
@@ -24,12 +24,12 @@ export default function Contacto() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <p className="font-bold text-hera-white text-sm uppercase tracking-widest mb-2 opacity-50">Email</p>
-                <p><a href="mailto:soporte@heradigital.co" className="text-hera-magenta hover:underline transition-colors text-lg">soporte@heradigital.co</a></p>
+                <p><a href="mailto:soporte@heradigital.co" className="text-hera-red hover:underline transition-colors text-lg">soporte@heradigital.co</a></p>
               </div>
 
               <div>
                 <p className="font-bold text-hera-white text-sm uppercase tracking-widest mb-2 opacity-50">Teléfono / WhatsApp</p>
-                <p><a href="https://wa.me/573132285648" target="_blank" rel="noopener noreferrer" className="text-hera-magenta hover:underline transition-colors text-lg">+57 3132285648</a></p>
+                <p><a href="https://wa.me/573132285648" target="_blank" rel="noopener noreferrer" className="text-hera-red hover:underline transition-colors text-lg">+57 3132285648</a></p>
               </div>
 
               <div>

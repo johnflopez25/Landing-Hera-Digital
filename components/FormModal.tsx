@@ -33,7 +33,7 @@ export default function FormModal({ isOpen, onClose }: FormModalProps) {
       {/* Modal Box */}
       <div className="relative w-full max-w-lg bg-[#121212] border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl z-10 animate-fade-in flex flex-col">
         {/* Glow de fondo para mantener estética */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-hera-magenta/10 blur-[50px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-hera-red/10 blur-[50px] pointer-events-none" />
 
         <button 
           onClick={onClose}

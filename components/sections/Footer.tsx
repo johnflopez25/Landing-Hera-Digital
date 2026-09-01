@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="font-serif text-2xl font-black text-hera-white">
                 HERA
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-hera-magenta" />
+              <span className="w-1.5 h-1.5 rounded-full bg-hera-red" />
             </a>
             <p className="font-sans text-xs text-hera-white/50 tracking-widest uppercase mb-6">
               Marketing de Autoridad
@@ -22,7 +22,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@heradigital"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-hera-white/50 hover:text-hera-magenta transition-colors duration-200"
+                className="text-hera-white/50 hover:text-hera-red transition-colors duration-200"
                 aria-label="YouTube"
               >
                 <Youtube size={20} />
@@ -31,7 +31,7 @@ export default function Footer() {
                 href="https://www.instagram.com/escuelaheradigital/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-hera-white/50 hover:text-hera-magenta transition-colors duration-200"
+                className="text-hera-white/50 hover:text-hera-red transition-colors duration-200"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -47,12 +47,12 @@ export default function Footer() {
             <div className="font-sans text-sm text-hera-white/60 flex flex-col gap-3 items-start">
               <p className="text-hera-white">Hera Digital LLC</p>
               <p>Florida, United States</p>
-              <a href="mailto:soporte@heradigital.co" className="hover:text-hera-magenta transition-colors">
+              <a href="mailto:soporte@heradigital.co" className="hover:text-hera-red transition-colors">
                 soporte@heradigital.co
               </a>
               <Link 
                 href="/contacto" 
-                className="mt-2 inline-flex items-center justify-center px-4 py-2 border border-white/10 hover:border-hera-magenta text-hera-white text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-hera-magenta/10 rounded-full"
+                className="mt-2 inline-flex items-center justify-center px-4 py-2 border border-white/10 hover:border-hera-red text-hera-white text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-hera-red/10 rounded-full"
               >
                 Página de Contacto
               </Link>

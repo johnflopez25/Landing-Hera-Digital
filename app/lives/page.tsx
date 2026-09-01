@@ -74,12 +74,12 @@ export default function LivesLanding() {
   return (
     <main className="min-h-screen bg-hera-black text-hera-white font-sans flex flex-col relative overflow-hidden">
       {/* Glow de fondo simulando el estilo de luz de la landing principal */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-hera-magenta/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-hera-red/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* ── BARRA SUPERIOR (Cuentadown) ── */}
       <header className="w-full bg-[#0a0a0a] border-b border-white/5 py-4 px-6 fixed top-0 z-50 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 backdrop-blur-md">
         <div className="flex items-center gap-2 text-hera-white/70 text-xs font-medium tracking-wider uppercase">
-          <Clock className="w-4 h-4 text-hera-magenta" />
+          <Clock className="w-4 h-4 text-hera-red" />
           La Sala de Estrategia comienza en...
         </div>
 
@@ -114,15 +114,15 @@ export default function LivesLanding() {
           {/* Card Principal - Diseño Glassmorphism Premium */}
           <div className="bg-[#151515] border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             {/* Pequeño acento de color en la parte superior de la tarjeta */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-hera-black via-hera-magenta to-hera-black opacity-50" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-hera-black via-hera-red to-hera-black opacity-50" />
 
             <div className="text-center mb-10">
-              <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-magenta/90 mb-4 block">
+              <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-red/90 mb-4 block">
                 Sala de Estrategia · En vivo por YouTube
               </span>
               <h1 className="font-serif text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight mb-6">
                 Si paras de trabajar,{" "}
-                <span className="text-hera-magenta inline-block italic">dejas de facturar</span>.
+                <span className="text-hera-red inline-block italic">dejas de facturar</span>.
               </h1>
               <div className="flex justify-center text-hera-white/70 font-sans leading-relaxed">
                 <p className="text-[15px] md:text-[17px] max-w-2xl px-4 md:px-0">
@@ -143,7 +143,7 @@ export default function LivesLanding() {
                   name="fields[name]"
                   placeholder="Ingresa tu nombre *" 
                   required
-                  className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
+                  className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
               <div className="relative">
@@ -153,7 +153,7 @@ export default function LivesLanding() {
                   name="fields[email]"
                   placeholder="Tu mejor correo electrónico *" 
                   required
-                  className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
+                  className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
               <div className="relative">
@@ -163,7 +163,7 @@ export default function LivesLanding() {
                   name="fields[phone]"
                   placeholder="Tu WhatsApp *" 
                   required
-                  className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
+                  className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
               <div className="relative">
@@ -173,14 +173,14 @@ export default function LivesLanding() {
                   name="fields[profession]"
                   placeholder="Tu profesión *" 
                   required
-                  className="w-full bg-hera-black border border-white/10 focus:border-hera-magenta rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
+                  className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
 
               <button 
                 type="submit"
                 disabled={isSubmitting}
-                className={`group relative w-full rounded-lg bg-hera-magenta py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all overflow-hidden mt-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-opacity-90'}`}
+                className={`group relative w-full rounded-lg bg-hera-red py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all overflow-hidden mt-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-opacity-90'}`}
               >
                 <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                   <div className="relative h-full w-8 bg-white/20" />
@@ -209,28 +209,28 @@ export default function LivesLanding() {
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-hera-white text-center mb-12 md:mb-16 max-w-3xl leading-snug">
-            ¿Tu freno real es de <span className="text-hera-magenta italic">conocimiento, oferta o sistema</span>? Esta semana lo descubres.
+            ¿Tu freno real es de <span className="text-hera-red italic">conocimiento, oferta o sistema</span>? Esta semana lo descubres.
           </h2>
 
           {/* Grid de 3 tarjetas estilo "brutalismo premium" oscuro — Test de los 3 Techos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 p-px rounded-xl overflow-hidden w-full max-w-5xl text-left md:text-center">
             {/* Techo 1 — Conocimiento */}
             <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
-              <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">1</span>
+              <span className="text-hera-red font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">1</span>
               <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
                 Sientes que te falta <strong className="text-hera-white font-semibold">un curso o certificado más</strong> antes de cobrar lo que realmente vales.
               </p>
             </div>
             {/* Techo 2 — Oferta */}
             <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
-              <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">2</span>
+              <span className="text-hera-red font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">2</span>
               <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
                 Sabes resolver el problema de tus clientes, pero todavía no lo tienes <strong className="text-hera-white font-semibold">empaquetado en una oferta clara y vendible.</strong>
               </p>
             </div>
             {/* Techo 3 — Sistema */}
             <div className="bg-[#121212] p-8 md:p-10 flex flex-col items-start md:items-center justify-start md:justify-center transition-colors hover:bg-[#151515] group">
-              <span className="text-hera-magenta font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">3</span>
+              <span className="text-hera-red font-serif text-5xl mb-4 opacity-30 group-hover:opacity-100 transition-opacity">3</span>
               <p className="text-hera-white/70 font-sans leading-relaxed text-[15px] md:text-base">
                 Tu oferta es clara, pero tus clientes solo llegan por recomendación y <strong className="text-hera-white font-semibold">si dejas de buscarlos, se detienen.</strong>
               </p>
@@ -253,7 +253,7 @@ export default function LivesLanding() {
                   El Programa en Vivo
                 </span>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white leading-tight mb-10">
-                  ¿Qué vas a ver en la <span className="text-hera-magenta italic">Sala de Estrategia?</span>
+                  ¿Qué vas a ver en la <span className="text-hera-red italic">Sala de Estrategia?</span>
                 </h2>
 
                 <ul className="space-y-6 text-hera-white/80 font-sans text-[15px] md:text-base">
@@ -266,8 +266,8 @@ export default function LivesLanding() {
                     "El primer movimiento que puedes hacer esta misma semana, sin esperar a saber más"
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-4">
-                      <div className="mt-1 bg-hera-magenta/10 p-1 rounded-full border border-hera-magenta/30 shadow-[0_0_10px_rgba(225,48,131,0.2)]">
-                        <Check className="w-4 h-4 text-hera-magenta" strokeWidth={3} />
+                      <div className="mt-1 bg-hera-red/10 p-1 rounded-full border border-hera-red/30 shadow-[0_0_10px_rgba(225, 48, 46,0.2)]">
+                        <Check className="w-4 h-4 text-hera-red" strokeWidth={3} />
                       </div>
                       <span className="leading-relaxed opacity-90">{item}</span>
                     </li>
@@ -277,7 +277,7 @@ export default function LivesLanding() {
 
               {/* Banner Inferior: AUTORIDAD */}
               <div className="bg-gradient-to-r from-[#1A1A1A] to-[#121212] border border-t-0 border-white/5 rounded-b-2xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
-                <div className="absolute top-0 left-0 w-1 h-full bg-hera-magenta" />
+                <div className="absolute top-0 left-0 w-1 h-full bg-hera-red" />
                 <h3 className="font-sans text-[13px] tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4">
                   
                 </h3>
@@ -288,7 +288,7 @@ export default function LivesLanding() {
                   <p>
                     La Sala de Estrategia es el espacio semanal donde ayudamos a profesionales con experiencia real a convertirse en <strong className="text-hera-white font-semibold">Estrategas Profesionales</strong>: dueños de su posicionamiento, su oferta, su audiencia y sus activos, en lugar de depender de que otros decidan por ellos.
                   </p>
-                  <p className="text-hera-white font-semibold italic border-l-2 border-hera-magenta/50 pl-4 py-1">
+                  <p className="text-hera-white font-semibold italic border-l-2 border-hera-red/50 pl-4 py-1">
                     "No vas a entrar a escuchar motivación vacía. Vas a entrar a tomar una mejor decisión sobre tu negocio."
                   </p>
                 </div>
@@ -300,14 +300,14 @@ export default function LivesLanding() {
               <div className="w-full h-full min-h-[400px] rounded-2xl bg-[#0a0a0a] border border-white/5 flex flex-col items-center justify-between p-10 text-center relative overflow-hidden shadow-2xl shadow-black/50 group">
                 
                 {/* Glow de fondo reaccionando al hover */}
-                <div className="absolute inset-0 bg-gradient-to-tl from-hera-magenta/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute -top-32 -right-32 w-64 h-64 bg-hera-magenta/10 blur-[100px] rounded-full group-hover:bg-hera-magenta/20 transition-colors duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-tl from-hera-red/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute -top-32 -right-32 w-64 h-64 bg-hera-red/10 blur-[100px] rounded-full group-hover:bg-hera-red/20 transition-colors duration-700" />
                 
                 {/* 1. Etiqueta Superior */}
                 <div className="relative z-10 w-full mb-8">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-magenta/20 bg-hera-magenta/5 mb-6">
-                    <span className="w-2 h-2 rounded-full bg-hera-magenta animate-pulse" />
-                    <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-hera-magenta/90">Sala Semanal · YouTube en Vivo</span>
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-red/20 bg-hera-red/5 mb-6">
+                    <span className="w-2 h-2 rounded-full bg-hera-red animate-pulse" />
+                    <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-hera-red/90">Sala Semanal · YouTube en Vivo</span>
                   </div>
 
                   <h4 className="font-serif text-2xl font-bold text-hera-white leading-tight mb-2">
@@ -318,21 +318,21 @@ export default function LivesLanding() {
                 {/* 2. Bloque Central: El "Ticket" de Fecha/Hora */}
                 <div className="relative z-10 mb-8 w-full max-w-[280px]">
                   {/* YouTube Icon interactivo */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#121212] border border-white/10 rounded-xl flex items-center justify-center shadow-xl z-20 group-hover:-translate-y-2 group-hover:shadow-[0_10px_30px_rgba(225,48,131,0.2)] transition-all duration-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hera-magenta"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" /></svg>
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#121212] border border-white/10 rounded-xl flex items-center justify-center shadow-xl z-20 group-hover:-translate-y-2 group-hover:shadow-[0_10px_30px_rgba(225, 48, 46,0.2)] transition-all duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hera-red"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" /></svg>
                   </div>
 
                   {/* Cuerpo del ticket */}
-                  <div className="bg-[#151515] border border-white/10 rounded-2xl p-8 pt-10 shadow-2xl relative overflow-hidden group-hover:border-hera-magenta/30 transition-colors duration-500">
+                  <div className="bg-[#151515] border border-white/10 rounded-2xl p-8 pt-10 shadow-2xl relative overflow-hidden group-hover:border-hera-red/30 transition-colors duration-500">
                     {/* Grid/Raya decorativa */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-hera-magenta to-transparent opacity-50" />
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-hera-red to-transparent opacity-50" />
                     
                     <div className="flex flex-col gap-1 items-center">
                       <span className="font-serif text-3xl font-bold text-hera-white uppercase tracking-wider">Lunes</span>
                       <span className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-hera-white to-hera-white/50 tracking-tighter drop-shadow-md my-2">
                         6:00 <span className="text-2xl text-hera-white/60">P.M.</span>
                       </span>
-                      <span className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-hera-magenta mt-1">
+                      <span className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-hera-red mt-1">
                         Hora Colombia
                       </span>
                     </div>
@@ -342,7 +342,7 @@ export default function LivesLanding() {
                 {/* 3. Párrafo descriptivo base y Foto */}
                 <div className="relative z-30 w-full flex-1 flex flex-col items-center justify-end gap-6 mt-0">
                   {/* FOTO EXPERTO */}
-                  <div className="w-full max-w-[260px] md:max-w-[320px] aspect-[3/4] flex flex-col items-center justify-end relative group-hover:drop-shadow-[0_0_30px_rgba(225,48,131,0.2)] transition-all duration-500 -mt-16 md:-mt-28">
+                  <div className="w-full max-w-[260px] md:max-w-[320px] aspect-[3/4] flex flex-col items-center justify-end relative group-hover:drop-shadow-[0_0_30px_rgba(225, 48, 46,0.2)] transition-all duration-500 -mt-16 md:-mt-28">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src="/experto.png" 
@@ -375,7 +375,7 @@ export default function LivesLanding() {
           </p>
           <a
             href="#registro"
-            className="group relative rounded-lg bg-hera-magenta py-4 px-10 font-sans text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20 inline-block cursor-pointer"
+            className="group relative rounded-lg bg-hera-red py-4 px-10 font-sans text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-red/20 inline-block cursor-pointer"
           >
             <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
               <div className="relative h-full w-8 bg-white/20" />
@@ -390,7 +390,7 @@ export default function LivesLanding() {
         <div className="max-w-3xl mx-auto flex flex-col items-center">
           
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-hera-white text-center mb-12 md:mb-16 leading-tight">
-            La Sala de Estrategia <span className="text-hera-magenta italic">no es</span> para todo el mundo
+            La Sala de Estrategia <span className="text-hera-red italic">no es</span> para todo el mundo
           </h2>
 
           <div className="flex flex-col gap-6 w-full">
@@ -416,13 +416,13 @@ export default function LivesLanding() {
 
             {/* SÍ (Destacado) */}
             <div className="relative mt-4">
-              <div className="absolute -inset-1 bg-gradient-to-r from-hera-magenta/50 to-hera-magenta/0 rounded-2xl blur opacity-20"></div>
-              <div className="bg-[#151515] border border-hera-magenta/30 rounded-2xl p-6 md:p-8 lg:p-10 flex items-start gap-4 md:gap-6 relative shadow-[0_10px_40px_rgba(225,48,131,0.15)]">
-                <div className="mt-1 bg-hera-magenta/10 p-2 rounded-full text-hera-magenta shrink-0 border border-hera-magenta/20 shadow-[0_0_15px_rgba(225,48,131,0.2)]">
+              <div className="absolute -inset-1 bg-gradient-to-r from-hera-red/50 to-hera-red/0 rounded-2xl blur opacity-20"></div>
+              <div className="bg-[#151515] border border-hera-red/30 rounded-2xl p-6 md:p-8 lg:p-10 flex items-start gap-4 md:gap-6 relative shadow-[0_10px_40px_rgba(225, 48, 46,0.15)]">
+                <div className="mt-1 bg-hera-red/10 p-2 rounded-full text-hera-red shrink-0 border border-hera-red/20 shadow-[0_0_15px_rgba(225, 48, 46,0.2)]">
                   <Check strokeWidth={3} className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-magenta mb-3 block">
+                  <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-red mb-3 block">
                     Esto SÍ es para ti
                   </span>
                   <p className="text-hera-white/90 font-sans text-[15px] md:text-[17px] leading-relaxed">
@@ -440,7 +440,7 @@ export default function LivesLanding() {
       <section className="w-full bg-hera-black pt-20 flex flex-col items-center relative z-10 border-t border-white/5">
         <div className="max-w-5xl mx-auto text-center px-4 mb-20 w-full">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white mb-6 leading-tight max-w-3xl mx-auto">
-            Cada lunes puede ser la sesión donde por fin ves tu <span className="text-hera-magenta italic">techo real</span>
+            Cada lunes puede ser la sesión donde por fin ves tu <span className="text-hera-red italic">techo real</span>
           </h2>
           <p className="text-hera-white/70 font-sans text-[15px] md:text-[17px] leading-relaxed max-w-2xl mx-auto mb-12">
             Si quieres dejar de vender solo tu tiempo y empezar a construir activos que no dependan de ti trabajando mañana, este es tu espacio.
@@ -459,7 +459,7 @@ export default function LivesLanding() {
             {/* BOTÓN CTA */}
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group relative w-full md:w-auto rounded-lg bg-hera-magenta py-4 px-10 font-sans text-xs md:text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-magenta/20"
+              className="group relative w-full md:w-auto rounded-lg bg-hera-red py-4 px-10 font-sans text-xs md:text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-red/20"
             >
               <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
                 <div className="relative h-full w-8 bg-white/20" />

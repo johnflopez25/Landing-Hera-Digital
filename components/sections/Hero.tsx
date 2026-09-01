@@ -84,7 +84,7 @@ export default function Hero() {
       <motion.div
         className="absolute inset-0 pointer-events-none hidden md:block"
         animate={{
-          background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(225,48,131,0.07), transparent 70%)`,
+          background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(225, 48, 46,0.07), transparent 70%)`,
         }}
         transition={{ type: "tween", duration: 0.4 }}
       />
@@ -98,11 +98,11 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="flex items-center gap-4 mb-6"
         >
-          <span className="w-8 md:w-12 h-px bg-hera-magenta" />
+          <span className="w-8 md:w-12 h-px bg-hera-red" />
           <span className="font-sans text-[10px] md:text-xs uppercase tracking-[0.25em] text-hera-white/60 font-semibold">
             Escuela de negocios digitales para profesionales
           </span>
-          <span className="w-8 md:w-12 h-px bg-hera-magenta" />
+          <span className="w-8 md:w-12 h-px bg-hera-red" />
         </motion.div>
 
         {/* H1 */}
@@ -114,7 +114,7 @@ export default function Hero() {
         >
           Tu marca profesional,<br />
           <span className="text-transparent bg-clip-text"
-            style={{ backgroundImage: "linear-gradient(90deg, #F5F5F5 0%, #E13083 100%)" }}>
+            style={{ backgroundImage: "linear-gradient(90deg, #F5F5F5 0%, #E1302E 100%)" }}>
             tu activo más poderoso
           </span>
         </motion.h1>
@@ -138,8 +138,8 @@ export default function Hero() {
             onClick={() => setIsModalOpen(true)}
             className="group relative inline-flex items-center gap-3 text-hera-white font-sans text-sm md:text-base font-semibold px-8 md:px-10 py-4 overflow-hidden rounded-full transition-all duration-300"
             style={{
-              background: "linear-gradient(135deg, #E13083, #7b2fff)",
-              boxShadow: "0 0 30px rgba(225,48,131,0.35)",
+              background: "linear-gradient(135deg, #E1302E, #7b2fff)",
+              boxShadow: "0 0 30px rgba(225, 48, 46,0.35)",
             }}
           >
             {/* Shine sweep on hover */}
@@ -157,7 +157,7 @@ export default function Hero() {
 
       {/* ── MOBILE STEPS ─────────────────────────────────────────────────── */}
       <div className="md:hidden relative z-10 px-5 py-8 flex-1">
-        <div className="w-16 h-px bg-hera-magenta/50 mx-auto mb-8" />
+        <div className="w-16 h-px bg-hera-red/50 mx-auto mb-8" />
         <div className="grid grid-cols-2 gap-4">
           {STEPS_MOBILE.map((step, i) => (
             <motion.div key={step.num}
@@ -165,7 +165,7 @@ export default function Hero() {
               transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
               className="bg-hera-surface/50 border border-hera-border p-4 flex flex-col gap-2"
             >
-              <span className="font-serif text-2xl font-black text-hera-magenta/25 leading-none select-none">{step.num}</span>
+              <span className="font-serif text-2xl font-black text-hera-red/25 leading-none select-none">{step.num}</span>
               <h3 className="font-serif text-sm font-bold text-hera-white leading-tight">{step.title}</h3>
               <p className="font-sans text-[11px] text-hera-muted leading-relaxed">{step.desc}</p>
             </motion.div>
@@ -185,11 +185,11 @@ export default function Hero() {
           style={{ fontFamily: "'Inter', 'Playfair Display', sans-serif" }}
         >
           <defs>
-            {/* Curve gradient: dark-purple → magenta → pink */}
+            {/* Curve gradient: dark-purple → red → pink */}
             <linearGradient id="cg" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%"   stopColor="#2d0d55" stopOpacity="0.7" />
               <stop offset="25%"  stopColor="#7b1fa2" stopOpacity="1" />
-              <stop offset="60%"  stopColor="#E13083" stopOpacity="1" />
+              <stop offset="60%"  stopColor="#E1302E" stopOpacity="1" />
               <stop offset="100%" stopColor="#ff80b3" stopOpacity="1" />
             </linearGradient>
             {/* Glow for the curve line */}
@@ -223,11 +223,11 @@ export default function Hero() {
               transition={{ delay: n.delay, duration: 0.5, type: "spring", stiffness: 200 }}
             >
               {/* Outer glow halo */}
-              <circle cx={n.cx} cy={n.cy} r="16" fill="rgba(225,48,131,0.12)" />
+              <circle cx={n.cx} cy={n.cy} r="16" fill="rgba(225, 48, 46,0.12)" />
 
               {/* Dot on the curve */}
               <circle cx={n.cx} cy={n.cy} r="5" fill="white"
-                style={{ filter: "drop-shadow(0 0 8px #E13083)" }} />
+                style={{ filter: "drop-shadow(0 0 8px #E1302E)" }} />
 
               {/* Dashed vertical drop line → ends at LINE_Y2 (inside label zone) */}
               <motion.line

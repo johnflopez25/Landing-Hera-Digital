@@ -20,8 +20,8 @@ export default function FinalCTA() {
         style={{
           width:  "520px",
           height: "2px",
-          background: "linear-gradient(90deg, transparent 0%, #7b2fff 20%, #E13083 50%, #7b2fff 80%, transparent 100%)",
-          boxShadow: "0 0 12px 3px rgba(225,48,131,0.8), 0 0 40px 10px rgba(123,47,255,0.5)",
+          background: "linear-gradient(90deg, transparent 0%, #7b2fff 20%, #E1302E 50%, #7b2fff 80%, transparent 100%)",
+          boxShadow: "0 0 12px 3px rgba(225, 48, 46,0.8), 0 0 40px 10px rgba(123,47,255,0.5)",
           filter: "blur(0.5px)",
         }}
       />
@@ -32,7 +32,7 @@ export default function FinalCTA() {
         style={{
           width:  "900px",
           height: "600px",
-          background: "conic-gradient(from 270deg at 50% 0%, transparent 35%, rgba(123,47,255,0.18) 45%, rgba(225,48,131,0.22) 50%, rgba(123,47,255,0.18) 55%, transparent 65%)",
+          background: "conic-gradient(from 270deg at 50% 0%, transparent 35%, rgba(123,47,255,0.18) 45%, rgba(225, 48, 46,0.22) 50%, rgba(123,47,255,0.18) 55%, transparent 65%)",
           filter: "blur(2px)",
         }}
       />
@@ -43,7 +43,7 @@ export default function FinalCTA() {
         style={{
           width:  "320px",
           height: "280px",
-          background: "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(225,48,131,0.30) 0%, rgba(123,47,255,0.12) 55%, transparent 100%)",
+          background: "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(225, 48, 46,0.30) 0%, rgba(123,47,255,0.12) 55%, transparent 100%)",
         }}
       />
 
@@ -80,7 +80,7 @@ export default function FinalCTA() {
           ¿Listo para que tu profesión{" "}
           <span
             className="text-transparent bg-clip-text"
-            style={{ backgroundImage: "linear-gradient(90deg, #F5F5F5, #E13083)" }}
+            style={{ backgroundImage: "linear-gradient(90deg, #F5F5F5, #E1302E)" }}
           >
             trabaje para ti?
           </span>
@@ -109,8 +109,8 @@ export default function FinalCTA() {
             onClick={() => setIsModalOpen(true)}
             className="relative inline-flex items-center gap-3 text-hera-white font-sans text-base font-semibold px-10 py-5 overflow-hidden group transition-all duration-300 rounded-sm"
             style={{
-              background: "linear-gradient(135deg, #E13083, #7b2fff)",
-              boxShadow: "0 0 30px rgba(225,48,131,0.35), 0 0 60px rgba(123,47,255,0.15)",
+              background: "linear-gradient(135deg, #E1302E, #7b2fff)",
+              boxShadow: "0 0 30px rgba(225, 48, 46,0.35), 0 0 60px rgba(123,47,255,0.15)",
             }}
           >
             {/* Shine sweep on hover */}

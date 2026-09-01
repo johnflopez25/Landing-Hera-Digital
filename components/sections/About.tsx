@@ -5,7 +5,7 @@ import { Layers, User, TrendingUp, Target } from "lucide-react";
 
 // Service pills (colored accent icons like the reference)
 const SERVICES = [
-  { icon: User,        color: "#E13083", label: "Personal Brand"    },
+  { icon: User,        color: "#E1302E", label: "Personal Brand"    },
   { icon: Layers,      color: "#7c3aed", label: "Branding Digital"  },
   { icon: TrendingUp,  color: "#10b981", label: "Growth Marketing"  },
   { icon: Target,      color: "#f59e0b", label: "Paid Ads"          },
@@ -97,7 +97,7 @@ export default function About() {
             className="font-serif font-bold leading-tight text-balance"
             style={{ fontSize: "clamp(24px, 3.8vw, 52px)", color: "rgba(245,245,245,0.45)" }}
           >
-            <span style={{ color: "rgba(225,48,131,0.85)" }}>posicionarte como referente indiscutible.</span>
+            <span style={{ color: "rgba(225, 48, 46,0.85)" }}>posicionarte como referente indiscutible.</span>
           </motion.p>
 
           {/* Line 4 — dimmest, body-style serif */}
