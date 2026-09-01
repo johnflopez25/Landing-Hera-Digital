@@ -34,21 +34,8 @@ export default function GraciasPage() {
           Casi listo. <span className="text-hera-magenta italic">Falta un paso más.</span>
         </h1>
         <p className="text-hera-white/70 font-sans text-[15px] md:text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-          Hacer las cosas bien requiere atención. Mira este video obligatorio (dura solo un par de minutos) donde te revelo las reglas de la Sala de Estrategia.
+          Tu registro para la Sala de Estrategia quedó confirmado. Recibirás el enlace de acceso y los recordatorios por WhatsApp y correo electrónico. Antes de irte, da el siguiente paso.
         </p>
-
-        {/* Contenedor del Video */}
-        <div className="w-full relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(225,48,131,0.05)] bg-[#0a0a0a] aspect-video mb-12">
-          <iframe 
-            className="absolute top-0 left-0 w-full h-full z-10" 
-            src="https://www.youtube.com/embed/3oMF0W1N6FQ?si=bNUqEkS13YcJcMJ1" 
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerPolicy="strict-origin-when-cross-origin" 
-            allowFullScreen
-          ></iframe>
-        </div>
 
         {/* Botón Call to Action Final / Siguiente Paso */}
         <Link 
