@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { Encode_Sans_Semi_Expanded } from "next/font/google";
+import { Barlow_Condensed, Inter, IBM_Plex_Mono } from "next/font/google";
 
-const encodeSans = Encode_Sans_Semi_Expanded({
-  weight: ["700"],
+const barlowCondensed = Barlow_Condensed({
+  weight: ["500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -31,10 +41,23 @@ export default function LivesLayout({
     <>
       <style dangerouslySetInnerHTML={{__html: `
         .font-serif {
-          font-family: ${encodeSans.style.fontFamily} !important;
+          font-family: var(--font-display) !important;
+        }
+        .font-sans {
+          font-family: var(--font-sans) !important;
+        }
+        .font-mono {
+          font-family: var(--font-mono) !important;
         }
       `}} />
-      <div className={encodeSans.className}>
+      <div
+        className={inter.className}
+        style={{
+          "--font-display": barlowCondensed.style.fontFamily,
+          "--font-sans": inter.style.fontFamily,
+          "--font-mono": ibmPlexMono.style.fontFamily,
+        } as React.CSSProperties}
+      >
         {children}
       </div>
     </>

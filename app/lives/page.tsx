@@ -78,7 +78,7 @@ export default function LivesLanding() {
 
       {/* ── BARRA SUPERIOR (Cuentadown) ── */}
       <header className="w-full bg-[#0a0a0a] border-b border-white/5 py-4 px-6 fixed top-0 z-50 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 backdrop-blur-md">
-        <div className="flex items-center gap-2 text-hera-white/70 text-xs font-medium tracking-wider uppercase">
+        <div className="flex items-center gap-2 text-hera-white/70 text-xs font-mono font-medium tracking-wider uppercase">
           <Clock className="w-4 h-4 text-hera-red" />
           La Sala de Estrategia comienza en...
         </div>
@@ -95,7 +95,7 @@ export default function LivesLanding() {
               <span className="font-serif text-2xl md:text-3xl font-bold leading-none text-hera-white">
                 {item.value.toString().padStart(2, "0")}
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-hera-white/50 mt-1">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-hera-white/50 mt-1">
                 {item.label}
               </span>
             </div>
@@ -117,7 +117,7 @@ export default function LivesLanding() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-hera-black via-hera-red to-hera-black opacity-50" />
 
             <div className="text-center mb-10">
-              <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-red/90 mb-4 block">
+              <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-red/90 mb-4 block">
                 Sala de Estrategia · En vivo por YouTube
               </span>
               <h1 className="font-serif text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight mb-6">
@@ -249,7 +249,7 @@ export default function LivesLanding() {
             {/* Columna Izquierda (Contenido y Checklist) */}
             <div className="lg:col-span-7 z-20 flex flex-col">
               <div className="bg-[#151515] border border-white/5 shadow-2xl rounded-t-2xl overflow-hidden relative flex-1 p-8 md:p-12">
-                <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4 block">
+                <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4 block">
                   El Programa en Vivo
                 </span>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-hera-white leading-tight mb-10">
@@ -278,7 +278,7 @@ export default function LivesLanding() {
               {/* Banner Inferior: AUTORIDAD */}
               <div className="bg-gradient-to-r from-[#1A1A1A] to-[#121212] border border-t-0 border-white/5 rounded-b-2xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
                 <div className="absolute top-0 left-0 w-1 h-full bg-hera-red" />
-                <h3 className="font-sans text-[13px] tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4">
+                <h3 className="font-mono text-[13px] tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4">
                   
                 </h3>
                 <h4 className="font-serif text-2xl md:text-3xl font-bold text-hera-white mb-6">
@@ -307,7 +307,7 @@ export default function LivesLanding() {
                 <div className="relative z-10 w-full mb-8">
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-red/20 bg-hera-red/5 mb-6">
                     <span className="w-2 h-2 rounded-full bg-hera-red animate-pulse" />
-                    <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-hera-red/90">Sala Semanal · YouTube en Vivo</span>
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-hera-red/90">Sala Semanal · YouTube en Vivo</span>
                   </div>
 
                   <h4 className="font-serif text-2xl font-bold text-hera-white leading-tight mb-2">
@@ -332,7 +332,7 @@ export default function LivesLanding() {
                       <span className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-hera-white to-hera-white/50 tracking-tighter drop-shadow-md my-2">
                         6:00 <span className="text-2xl text-hera-white/60">P.M.</span>
                       </span>
-                      <span className="font-sans text-[11px] font-bold tracking-[0.2em] uppercase text-hera-red mt-1">
+                      <span className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase text-hera-red mt-1">
                         Hora Colombia
                       </span>
                     </div>
@@ -422,7 +422,7 @@ export default function LivesLanding() {
                   <Check strokeWidth={3} className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="font-sans text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-red mb-3 block">
+                  <span className="font-mono text-[11px] md:text-xs tracking-[0.2em] uppercase font-bold text-hera-red mb-3 block">
                     Esto SÍ es para ti
                   </span>
                   <p className="text-hera-white/90 font-sans text-[15px] md:text-[17px] leading-relaxed">

@@ -37,7 +37,7 @@ export default function GraciasPage() {
         {/* Etiqueta de Éxito */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 mb-8">
           <Check className="w-4 h-4 text-green-500" />
-          <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-green-500">Registro Casi Completo</span>
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-green-500">Registro Casi Completo</span>
         </div>
 
         {/* Título Principal */}
