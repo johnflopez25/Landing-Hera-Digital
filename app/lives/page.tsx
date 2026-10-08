@@ -41,7 +41,8 @@ export default function LivesLanding() {
         }),
       });
 
-      router.push("/lives/gracias");
+      sessionStorage.setItem("sala_lead_email", String(formData.get("fields[email]") || ""));
+    router.push("/lives/gracias");
     } catch (error) {
       console.error(error);
       router.push("/lives/gracias");

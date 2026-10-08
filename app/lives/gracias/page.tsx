@@ -1,8 +1,28 @@
+"use client";
+
 import { Check } from "lucide-react";
 import Link from "next/link";
 import Script from "next/script";
 
 export default function GraciasPage() {
+  const handleWhatsAppClick = () => {
+    const email = sessionStorage.getItem("sala_lead_email");
+
+    if (email) {
+      fetch("https://heradigital.app.n8n.cloud/webhook/hera-sala-grupo-click", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          event: "CLICK_WHATSAPP",
+          source: "sala_estrategia",
+        }),
+        keepalive: true,
+      }).catch(console.error);
+    }
+  };
   return (
     <main className="min-h-screen bg-hera-black flex flex-col items-center justify-center p-4 relative overflow-hidden">
       {/* ── Evento de conversión (Registro completado) ──────────────────── */}
@@ -50,6 +70,7 @@ export default function GraciasPage() {
 
         {/* Botón Call to Action Final / Siguiente Paso */}
         <Link
+          onClick={handleWhatsAppClick}
           href="https://chat.whatsapp.com/BDGxUIHordc5yZJLAsUZDp"
           target="_blank"
           className="group relative w-full md:w-auto inline-flex items-center justify-center gap-3 rounded-lg bg-[#25D366] py-5 px-12 font-sans text-xs md:text-[14px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1EBE57] overflow-hidden shadow-2xl shadow-[#25D366]/30"
@@ -62,7 +83,7 @@ export default function GraciasPage() {
           </svg>
           <span className="relative z-10">ENTRAR AL GRUPO DE WHATSAPP</span>
         </Link>
-        
+
         {/* Anti-marketing final */}
         <p className="mt-6 text-[11px] text-hera-white/40 tracking-widest uppercase font-mono border-t border-white/5 pt-4">
           Asegura tu participación antes de que se agoten los cupos.
