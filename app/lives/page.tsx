@@ -28,7 +28,7 @@ export default function LivesLanding() {
         mode: "no-cors",
       });
 
-      await fetch("/api/sala-registro", {
+      await fetch("https://live.drjohnf.com/api/sala-registro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
