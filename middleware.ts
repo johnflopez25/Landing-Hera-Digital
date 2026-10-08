@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
   const isLivesSubdomain =
     hostname === LIVES_SUBDOMAIN || hostname.startsWith(`${LIVES_SUBDOMAIN}:`);
 
-  if (isLivesSubdomain && !pathname.startsWith("/lives")) {
+  if (isLivesSubdomain && !pathname.startsWith("/lives") && !pathname.startsWith("/api")) {
     const url = request.nextUrl.clone();
     url.pathname = `/lives${pathname === "/" ? "" : pathname}`;
     return NextResponse.rewrite(url);
