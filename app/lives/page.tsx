@@ -13,9 +13,10 @@ export default function LivesLanding() {
 
   const handleMailerLiteSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (isSubmitting) return;
     setIsSubmitting(true);
-    
+
     const formData = new FormData(e.currentTarget);
     formData.append("ml-submit", "1");
     formData.append("anticsrf", "true");
@@ -26,7 +27,20 @@ export default function LivesLanding() {
         body: formData,
         mode: "no-cors",
       });
-      // El request es opaco por el no-cors, pero MailerLite recibe los datos. Redirigimos sin parpadeos:
+
+      await fetch("/api/sala-registro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre: formData.get("fields[name]"),
+          email: formData.get("fields[email]"),
+          telefono: formData.get("fields[phone]"),
+          profesion: formData.get("fields[profession]"),
+        }),
+      });
+
       router.push("/lives/gracias");
     } catch (error) {
       console.error(error);
@@ -44,10 +58,10 @@ export default function LivesLanding() {
 
       // Target is Monday 23:00:00 UTC (which equals Monday 18:00 COT/UTC-5)
       const targetUTC = new Date(Date.UTC(
-         nowUTC.getUTCFullYear(),
-         nowUTC.getUTCMonth(),
-         nowUTC.getUTCDate() + daysUntilMonday,
-         23, 0, 0
+        nowUTC.getUTCFullYear(),
+        nowUTC.getUTCMonth(),
+        nowUTC.getUTCDate() + daysUntilMonday,
+        23, 0, 0
       ));
 
       if (nowMs >= targetUTC.getTime()) {
@@ -105,7 +119,7 @@ export default function LivesLanding() {
 
       {/* ── CONTENIDO PRINCIPAL (Card Central) ── */}
       <section id="registro" className="flex-1 flex flex-col items-center justify-center pt-32 pb-20 px-4 z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
@@ -132,52 +146,52 @@ export default function LivesLanding() {
             </div>
 
             {/* Formulario (Integrado Nativamente con MailerLite) */}
-            <form 
+            <form
               className="flex flex-col gap-4 max-w-md mx-auto"
               onSubmit={handleMailerLiteSubmit}
             >
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="fields[name]"
-                  placeholder="Ingresa tu nombre *" 
+                  placeholder="Ingresa tu nombre *"
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="fields[email]"
-                  placeholder="Tu mejor correo electrónico *" 
+                  placeholder="Tu mejor correo electrónico *"
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
               <div className="relative">
                 <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="fields[phone]"
-                  placeholder="Tu WhatsApp *" 
+                  placeholder="Tu WhatsApp *"
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
               <div className="relative">
                 <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hera-white/30" />
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="fields[profession]"
-                  placeholder="Tu profesión *" 
+                  placeholder="Tu profesión *"
                   required
                   className="w-full bg-hera-black border border-white/10 focus:border-hera-red rounded-lg py-4 pl-12 pr-4 text-hera-white placeholder:text-hera-white/30 outline-none transition-colors duration-200"
                 />
               </div>
 
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting}
                 className={`group relative w-full rounded-lg bg-hera-red py-4 px-8 font-sans text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all overflow-hidden mt-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-opacity-90'}`}
@@ -207,7 +221,7 @@ export default function LivesLanding() {
       {/* ── SECCIÓN: TRES PILARES / AULAS ── */}
       <section className="w-full pt-16 pb-24 px-4 z-10 relative">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
-          
+
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-hera-white text-center mb-12 md:mb-16 max-w-3xl leading-snug">
             ¿Tu freno real es de <span className="text-hera-red italic">conocimiento, oferta o sistema</span>? Esta semana lo descubres.
           </h2>
@@ -243,9 +257,9 @@ export default function LivesLanding() {
       {/* ── SECCIÓN: QUÉ VAS A VER (NUEVO BLOQUE DE AUTORIDAD) ── */}
       <section className="w-full pt-12 pb-32 px-4 z-10 relative bg-[#0a0a0a] overflow-hidden border-t border-white/5">
         <div className="max-w-6xl mx-auto relative">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
+
             {/* Columna Izquierda (Contenido y Checklist) */}
             <div className="lg:col-span-7 z-20 flex flex-col">
               <div className="bg-[#151515] border border-white/5 shadow-2xl rounded-t-2xl overflow-hidden relative flex-1 p-8 md:p-12">
@@ -279,7 +293,7 @@ export default function LivesLanding() {
               <div className="bg-gradient-to-r from-[#1A1A1A] to-[#121212] border border-t-0 border-white/5 rounded-b-2xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-center">
                 <div className="absolute top-0 left-0 w-1 h-full bg-hera-red" />
                 <h3 className="font-mono text-[13px] tracking-[0.2em] uppercase font-bold text-hera-white/50 mb-4">
-                  
+
                 </h3>
                 <h4 className="font-serif text-2xl md:text-3xl font-bold text-hera-white mb-6">
                   No es teoría. Es el sistema que estamos construyendo en Hera Digital.
@@ -298,11 +312,11 @@ export default function LivesLanding() {
             {/* Columna Derecha (Agenda Destacada) */}
             <div className="lg:col-span-5 relative mt-8 lg:mt-0 flex">
               <div className="w-full h-full min-h-[400px] rounded-2xl bg-[#0a0a0a] border border-white/5 flex flex-col items-center justify-between p-10 text-center relative overflow-hidden shadow-2xl shadow-black/50 group">
-                
+
                 {/* Glow de fondo reaccionando al hover */}
                 <div className="absolute inset-0 bg-gradient-to-tl from-hera-red/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute -top-32 -right-32 w-64 h-64 bg-hera-red/10 blur-[100px] rounded-full group-hover:bg-hera-red/20 transition-colors duration-700" />
-                
+
                 {/* 1. Etiqueta Superior */}
                 <div className="relative z-10 w-full mb-8">
                   <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-hera-red/20 bg-hera-red/5 mb-6">
@@ -319,14 +333,14 @@ export default function LivesLanding() {
                 <div className="relative z-10 mb-8 w-full max-w-[280px]">
                   {/* YouTube Icon interactivo */}
                   <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#121212] border border-white/10 rounded-xl flex items-center justify-center shadow-xl z-20 group-hover:-translate-y-2 group-hover:shadow-[0_10px_30px_rgba(225, 48, 46,0.2)] transition-all duration-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hera-red"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hera-red"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z" /><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" /></svg>
                   </div>
 
                   {/* Cuerpo del ticket */}
                   <div className="bg-[#151515] border border-white/10 rounded-2xl p-8 pt-10 shadow-2xl relative overflow-hidden group-hover:border-hera-red/30 transition-colors duration-500">
                     {/* Grid/Raya decorativa */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-hera-red to-transparent opacity-50" />
-                    
+
                     <div className="flex flex-col gap-1 items-center">
                       <span className="font-serif text-3xl font-bold text-hera-white uppercase tracking-wider">Lunes</span>
                       <span className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-hera-white to-hera-white/50 tracking-tighter drop-shadow-md my-2">
@@ -344,9 +358,9 @@ export default function LivesLanding() {
                   {/* FOTO EXPERTO */}
                   <div className="w-full max-w-[260px] md:max-w-[320px] aspect-[3/4] flex flex-col items-center justify-end relative group-hover:drop-shadow-[0_0_30px_rgba(225, 48, 46,0.2)] transition-all duration-500 -mt-16 md:-mt-28">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img 
-                      src="/experto.png" 
-                      alt="Experto Hera Digital" 
+                    <img
+                      src="/experto.png"
+                      alt="Experto Hera Digital"
                       className="w-full h-full object-cover object-bottom z-10 md:grayscale md:opacity-90 md:group-hover:grayscale-0 md:group-hover:opacity-100 transition-all duration-700 [mask-image:linear-gradient(to_top,transparent_0%,black_30%)]"
                     />
                   </div>
@@ -355,7 +369,7 @@ export default function LivesLanding() {
                     Un horario pensado para que puedas conectarte después de tu jornada y tomar, con calma, decisiones importantes para tu negocio.
                   </p>
                 </div>
-                
+
                 {/* Sombra base */}
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
               </div>
@@ -388,7 +402,7 @@ export default function LivesLanding() {
       {/* ── SECCIÓN: FILTRO DE AUDIENCIA ── */}
       <section className="w-full pt-20 pb-28 px-4 z-10 relative bg-hera-black border-t border-white/5">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          
+
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-hera-white text-center mb-12 md:mb-16 leading-tight">
             La Sala de Estrategia <span className="text-hera-red italic">no es</span> para todo el mundo
           </h2>
@@ -449,15 +463,15 @@ export default function LivesLanding() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full">
             {/* Íconos Izquierda */}
             <div className="hidden md:flex items-center gap-6 text-hera-white/20">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
               <span className="w-1 h-1 rounded-full bg-white/10" />
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
               <span className="w-1 h-1 rounded-full bg-white/10" />
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 7.17c.22-1.8 1.6-3.19 3.4-3.41C8.75 3.5 12 3.5 12 3.5s3.25 0 6.1.26c1.8.22 3.18 1.61 3.4 3.41.26 2.83.26 4.83.26 4.83s0 2-.26 4.83c-.22 1.8-1.6 3.19-3.4 3.41-2.85.26-6.1.26-6.1.26s-3.25 0-6.1-.26c-1.8-.22-3.18-1.61-3.4-3.41C2.24 14 2.24 12 2.24 12s0-2 .26-4.83z" /><polygon points="10 15 15 12 10 9 10 15" /></svg>
             </div>
 
             {/* BOTÓN CTA */}
-            <button 
+            <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="group relative w-full md:w-auto rounded-lg bg-hera-red py-4 px-10 font-sans text-xs md:text-[13px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-opacity-90 overflow-hidden shadow-2xl shadow-hera-red/20"
             >
@@ -469,11 +483,11 @@ export default function LivesLanding() {
 
             {/* Íconos Derecha */}
             <div className="hidden md:flex items-center gap-6 text-hera-white/20">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
               <span className="w-1 h-1 rounded-full bg-white/10" />
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
               <span className="w-1 h-1 rounded-full bg-white/10" />
-              <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M9 0h1.98c.144 2.096 1.522 3.69 3.659 3.905v3.134c-1.29-.028-2.457-.45-3.483-1.126V11.23c0 3.32-2.613 6.012-5.836 6.012S-.516 14.549-.516 11.23 2.193 5.218 5.418 5.218c.348 0 .685.032 1.01.092v3.298a2.76 2.76 0 0 0-.616-.07c-1.488 0-2.694 1.25-2.694 2.793 0 1.543 1.206 2.792 2.694 2.792 1.488 0 2.695-1.25 2.695-2.792V0h.493Z"/></svg>
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M9 0h1.98c.144 2.096 1.522 3.69 3.659 3.905v3.134c-1.29-.028-2.457-.45-3.483-1.126V11.23c0 3.32-2.613 6.012-5.836 6.012S-.516 14.549-.516 11.23 2.193 5.218 5.418 5.218c.348 0 .685.032 1.01.092v3.298a2.76 2.76 0 0 0-.616-.07c-1.488 0-2.694 1.25-2.694 2.793 0 1.543 1.206 2.792 2.694 2.792 1.488 0 2.695-1.25 2.695-2.792V0h.493Z" /></svg>
             </div>
           </div>
         </div>
@@ -484,7 +498,7 @@ export default function LivesLanding() {
             <span className="text-[11px] md:text-xs text-hera-white/40 font-sans tracking-wide">
               © {new Date().getFullYear()} Hera Digital. Todos los derechos reservados.
             </span>
-            
+
             <span className="font-serif font-black text-xl tracking-widest text-hera-white opacity-80 mx-auto md:mx-0">
               HERA
             </span>
